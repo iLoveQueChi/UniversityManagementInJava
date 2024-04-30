@@ -33,11 +33,11 @@ public class staff extends employee
 
 	public double getAllowance()
 	{
-		if(this.duty.equals("Nhan Vien"))
+		if(this.duty.equals("Excutive Staff"))
 			super.allowance = 500;
-		else if(this.duty.equals("Pho Phong"))
+		else if(this.duty.equals("Deputy head of department"))
 			super.allowance = 100;
-		else if(this.duty.equals("Truong Phong"))
+		else if(this.duty.equals("Head of department"))
 			super.allowance = 1300;
 
 		return super.allowance;
