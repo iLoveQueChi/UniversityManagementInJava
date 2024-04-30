@@ -3,16 +3,14 @@ public class staff extends employee
 	// Attributes
 	private String department;
 	private String duty;
-	private int workingDay;
 
 	// Constructor
 	public staff(String fullName, String employeeID, double allowance, double salaryCoefficient, String department, String duty, int workingDay)
 	{
-		super(fullName, employeeID, allowance, salaryCoefficient);
+		super(fullName, employeeID, allowance, salaryCoefficient, workingDay);
 
 		this.department = department;
 		this.duty = duty;
-		this.workingDay = workingDay;
 	}
 
 	// Getter
@@ -24,11 +22,6 @@ public class staff extends employee
 	public String getDuty()
 	{
 		return this.duty;
-	}
-
-	public double getWorkingDay()
-	{
-		return this.workingDay;
 	}
 
 	public double getAllowance()
@@ -54,13 +47,9 @@ public class staff extends employee
 		this.duty = newDuty;
 	}
 
-	public void setWorkingDay(int newWorkingDay)
-	{
-		this.workingDay = newWorkingDay;
-	}
 
 	@Override
-	public double getSalary()
+	public double getSalary(double allowance, double salaryCoefficient, int workingDay)
 	{
 		return super.salaryCoefficient*830 + super.allowance + workingDay*30;
 	}
@@ -68,13 +57,6 @@ public class staff extends employee
 	@Override
 	public String toString()
 	{
-		return "ID: " + super.getID() + "\n"
-			 + "Full Name: " + super.getFullName() + "\n"
-			 + "Allowance: " + getAllowance() + "\n"
-			 + "Salary Coefficient: " + super.getSalaryCoefficient() + "\n"
-			 + "Duty: " + getDuty() + "\n"
-			 + "Department: " + getDepartment() + "\n"
-		 	 + "Number of working day: " + getWorkingDay() + "\n"
-			 + "Salary: " + getSalary() + "\n";
+		return super.toString() + "_" + this.department + "_" + this.duty;
 	}
 }
