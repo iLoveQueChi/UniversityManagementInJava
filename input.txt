@@ -6,3 +6,4 @@
 1006Lecturer, Tran Dai Quang,  100, 6.9, Bussiness Adminstration,          Bachelor,                  120
 1007Lecturer, Ton Nu Hue Tran, 100, 7.6, Social science and humanities,    Master,                    110
 1008Staff, 	  Nguyen Ba Dao,   89,  5.7, Security department, 	           Excutive staff, 		      99
+1009Lecturer, Vo Van Khai,     100, 7.6, Sport science,    				   Bachelor,                  50
