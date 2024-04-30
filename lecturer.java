@@ -1,18 +1,16 @@
-public abstract class lecturer extends employee
+public class lecturer extends employee
 {	
 	// Attributes
 	private String faculty;
 	private String degree;
-	private int teachingDay;
 
 	// Constructor
-	public lecturer(String fullName, String employeeID, double allowance, double salaryCoefficient, String faculty, String degree, int teachingDay) // Lecturer, Doan Xuan Thanh, 100, 5.6, IT, Doctor, 100
+	public lecturer(String fullName, String employeeID, double allowance, double salaryCoefficient, String faculty, String degree, int workingDay) // Lecturer, Doan Xuan Thanh, 100, 5.6, IT, Doctor, 100
 	{
-		super(fullName, employeeID, allowance, salaryCoefficient);
+		super(fullName, employeeID, allowance, salaryCoefficient, workingDay);
 
 		this.faculty = faculty;
 		this.degree = degree;
-		this.teachingDay = teachingDay;
 	}
 
 	// Getter
@@ -24,11 +22,6 @@ public abstract class lecturer extends employee
 	public String getDegree()
 	{
 		return this.degree;
-	}
-
-	public int getTeachingDay()
-	{
-		return this.teachingDay;
 	}
 
 	public double getAllowance()
@@ -54,27 +47,16 @@ public abstract class lecturer extends employee
 		this.degree = newDegree;
 	}
 
-	public void setTeachingDay(int newTeachingDay)
-	{
-		this.teachingDay = newTeachingDay;
-	}
 
 	@Override
-	public double getSalary()
+	public double getSalary(double allowance, double salaryCoefficient, int workingDay)
 	{
-		return super.salaryCoefficient*830 + super.allowance + teachingDay*30;
+		return super.salaryCoefficient*830 + super.allowance + workingDay*30;
 	}
 
 	@Override
 	public String toString()
 	{
-		return "ID: " + super.getID() + "\n"
-			 + "Full Name: " + super.getFullName() + "\n"
-			 + "Allowance: " + getAllowance() + "\n"
-			 + "Salary Coefficient: " + super.getSalaryCoefficient() + "\n"
-			 + "Degree: " + getDegree() + "\n"
-			 + "Faculty: " + getFaculty() + "\n"
-		 	 + "Number of teaching day: " + getTeachingDay() + "\n"
-			 + "Salary: " + getSalary() + "\n";
+		return super.toString() + "_" + this.faculty + "_" + this.degree;
 	}
 }
