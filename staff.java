@@ -5,7 +5,7 @@ public class staff extends employee
 	private String duty;
 
 	// Constructor
-	public staff(String fullName, String employeeID, double allowance, double salaryCoefficient, String department, String duty, int workingDay)
+	public staff( String employeeID, String fullName, double allowance, double salaryCoefficient, String department, String duty, int workingDay)
 	{
 		super(fullName, employeeID, allowance, salaryCoefficient, workingDay);
 
