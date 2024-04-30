@@ -75,7 +75,7 @@ public abstract class employee
 	@Override
 	public String toString() 
 	{
-		return String.format("Full Name: %s, salary coefficient: %f, number of working day: %d", this.fullName, this.salaryCoefficient, this.workingDay);
+		return this.fullName + "_" + this.salaryCoefficient + "_" + this.workingDay;
 	}
 
 	public abstract double getSalary();
