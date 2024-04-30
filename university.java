@@ -99,7 +99,7 @@ public class university
 	}
 
 
-// 5. Load in Lecture's details of IT faculty whose name is "Khai" only from input file
+// 5. Load in Lecture's details of IT faculty whose name is "Khai" only from input file and print out his salary
 	public ArrayList<lecturer> getLecturerKhaiOfITFaculty(String employeePath)
 	{
 		ArrayList<lecturer> lecturerKhaiOfITFacultyResult = new ArrayList<lecturer>();
@@ -111,10 +111,7 @@ public class university
 			if(details[0].startsWith("LT") && details[1].endsWith("Khai"))
 				lecturerKhaiOfITFacultyResult.add(new lecturer(details[0],details[1], Integer.parseInt(details[2]), Double.parseDouble(details[3]), details[4], details[5], Integer.parseInt(details[6])));
 		}
-
-		return lecturerKhaiOfITFacultyResult;
 	}	
-
 
 
 
