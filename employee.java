@@ -8,7 +8,7 @@ public abstract class employee
 	protected int workingDay;
 
 	// Contrustor
-	public employee(String fullName, String employeeID, double allowance, double salaryCoefficient, int workingDay)
+	public employee(String employeeID, String fullName, double allowance, double salaryCoefficient, int workingDay)
 	{
 		this.fullName = fullName;
 		this.employeeID = employeeID;
@@ -78,7 +78,7 @@ public abstract class employee
 		return this.fullName + "_" + this.salaryCoefficient + "_" + this.workingDay;
 	}
 
-	public abstract double getSalary();
+	public abstract double getSalary(double allowance, double salaryCoefficient, int workingDay);
 
 }
 
