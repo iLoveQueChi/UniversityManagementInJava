@@ -1,9 +1,9 @@
 1001Lecturer, Doan Xuan Thanh, 100, 5.6, IT,                               Doctor,                    100
-1002Staff, 	  Doan Chi Binh,   88,  4.6, Financial department, 	           Head of department,        69
-1003Staff, 	  Lu Bo,   	   	   99,  6.8, Network adminstration department, Head of department,        88
-1004Staff, 	  Trieu Van,   	   70,  3.7, Network adminstration department, Deputy head of department, 88
+1002Staff,    Doan Chi Binh,   88,  4.6, Financial department,             Head of department,        69
+1003Staff,    Lu Bo,           99,  6.8, Network adminstration department, Head of department,        88
+1004Staff,    Trieu Van,       70,  3.7, Network adminstration department, Deputy head of department, 88
 1005Lecturer, Tran Trung Tin,  100, 7.6, IT,                               Doctor,                    110
 1006Lecturer, Tran Dai Quang,  100, 6.9, Bussiness Adminstration,          Bachelor,                  120
 1007Lecturer, Ton Nu Hue Tran, 100, 7.6, Social science and humanities,    Master,                    110
-1008Staff, 	  Nguyen Ba Dao,   89,  5.7, Security department, 	           Excutive staff, 		      99
-1009Lecturer, Vo Van Khai,     100, 7.6, Sport science,    				   Bachelor,                  50
+1008Staff,    Nguyen Ba Dao,   89,  5.7, Security department,              Excutive staff,            99
+1009Lecturer, Vo Van Khai,     100, 7.6, Sport science,                    Bachelor,                  50
