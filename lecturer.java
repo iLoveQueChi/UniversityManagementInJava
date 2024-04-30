@@ -5,7 +5,7 @@ public class lecturer extends employee
 	private String degree;
 
 	// Constructor
-	public lecturer(String fullName, String employeeID, double allowance, double salaryCoefficient, String faculty, String degree, int workingDay) // Lecturer, Doan Xuan Thanh, 100, 5.6, IT, Doctor, 100
+	public lecturer(String employeeID, String fullName, double allowance, double salaryCoefficient, String faculty, String degree, int workingDay) // Lecturer, Doan Xuan Thanh, 100, 5.6, IT, Doctor, 100
 	{
 		super(fullName, employeeID, allowance, salaryCoefficient, workingDay);
 
