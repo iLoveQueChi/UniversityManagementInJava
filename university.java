@@ -29,6 +29,8 @@ public class university
 	}
 
 
+
+/*-------------------------------MUST CALL THIS METHOD FIRST-------------------------------*/
 // 1. Load in employee's details from input file
 	public ArrayList<employee> loadInEmployeeList(String employeePath) 
 	{
@@ -46,72 +48,90 @@ public class university
 
 		return employeeResult;
 	}
+/*-------------------------------MUST CALL THIS METHOD FIRST-------------------------------*/
 
 
-// 2. Load in Lecturer's details only from input file
-	public ArrayList<lecturer> loadInLecturerList(String employeePath)
+
+// 2. Get lecturerList from employeeList
+	public ArrayList<lecturer> getLecturerList()
 	{
-		ArrayList<lecturer> lecturerResult = new ArrayList<lecturer>();		
-		ArrayList<String> lecturerList =  loadFile(employeePath); // read
+		ArrayList<lecturer> lecturerList = new ArrayList<lecturer>();		
 
-		for(String lecturer_one : lecturerList)
+		for(employee employee_one  : this.employeeList)
 		{
-			String details[] = lecturer_one.split(",");
-			if(details[0].startsWith("LT"))
-				lecturerResult.add(new lecturer(details[0], details[1], Double.parseDouble(details[2]), Double.parseDouble(details[3]), details[4], details[5], Integer.parseInt(details[6])));
+			if(employee_one.toString().startsWith("LT"))
+			{
+				String[] details = employee_one.toString().split("_");
+				lecturerList.add(new lecturer(details[0], details[1], Double.parseDouble(details[2]), Double.parseDouble(details[3]), details[4], details[5], Integer.parseInt(details[6])));
+			}
 		}
 
-		return lecturerResult;
+		return lecturerList;
 	}
 
 
-// 3. Load in Staff's details only from input file
-	public ArrayList<staff> loadInStaffList(String employeePath)
+// 3. Get staffList from employeeList
+	public ArrayList<staff> getStaffList(String employeePath)
 	{
-		ArrayList<staff> staffResult = new ArrayList<staff>();
-		ArrayList<String> staffList = loadFile(employeePath);
+		ArrayList<staff> staffList = new ArrayList<staff>();
 
-		for(String staff_one : staffList)
+		for(employee employee_one  : this.employeeList)
 		{
-			String details[] = staff_one.split(",");
-			if(details[0].startsWith("ST"))
-				staffResult.add(new staff(details[0], details[1], Integer.parseInt(details[2]), Double.parseDouble(details[3]), details[4], details[5], Integer.parseInt(details[6])));
+			if(employee_one.toString().startsWith("ST"))
+			{
+				String[] details = employee_one.toString().split("_");
+				staffList.add(new staff(details[0], details[1], Integer.parseInt(details[2]), Double.parseDouble(details[3]), details[4], details[5], Integer.parseInt(details[6])));
+			}
 		}
 
-		return staffResult;
+		return staffList;
 	}
 
 
-// 4. Load in Lecture's details of IT faculty only from input file
-	public ArrayList<lecturer> loadInITLecturerList(String employeePath)
+// 4. Get ITlecturerList from employeeList
+	public ArrayList<lecturer> getITLecturerList()
 	{
-		ArrayList<lecturer> lecturerOfITFacultyResult = new ArrayList<lecturer>();
-		ArrayList<String> lecturerOfITFacultyList = loadFile(employeePath);
+		ArrayList<lecturer> lecturerOfITFacultyList = new ArrayList<lecturer>();
+		ArrayList<lecturer> lecturerList = getLecturerList();
 
-		for(String lecturer_one : lecturerOfITFacultyList)
+		for(lecturer lecturer_one : lecturerList)
 		{
-			String details[] = lecturer_one.split(",");
-			if(details[0].startsWith("LT") && details[4].startsWith("IT"))
-				lecturerOfITFacultyResult.add(new lecturer(details[0],details[1], Integer.parseInt(details[2]), Double.parseDouble(details[3]), details[4], details[5], Integer.parseInt(details[6])));
+			if(lecturer_one.getFaculty().equals("IT"))
+			{
+				String[] details = lecturer_one.toString().split("_");
+				lecturerOfITFacultyList.add(new lecturer(details[0], details[1], Integer.parseInt(details[2]), Double.parseDouble(details[3]), details[4], details[5], Integer.parseInt(details[6])));
+			}
 		}
 
-		return lecturerOfITFacultyResult;
+		return lecturerOfITFacultyList;
 	}
 
 
-// 5. Load in Lecture's details of IT faculty whose name is "Khai" only from input file and print out his salary
-	public ArrayList<lecturer> getLecturerKhaiOfITFaculty(String employeePath)
+// 5. Get get lecturer Khai  from ITLecturerList
+	public ArrayList<lecturer> getLecturerKhaiOfITFaculty()
 	{
-		ArrayList<lecturer> lecturerKhaiOfITFacultyResult = new ArrayList<lecturer>();
-		ArrayList<String> lecturerKhaiOfITFacultyList = loadFile(employeePath);
+		ArrayList<lecturer> lecturerKhaiOfITFacultyList = new ArrayList<lecturer>();
+		ArrayList<lecturer> lecturerList = getITLecturerList();
 
-		for(String lecturer_one : lecturerKhaiOfITFacultyList)
+		for(lecturer lecturer_one : lecturerList)
 		{
-			String details[] = lecturer_one.split(",");
-			if(details[0].startsWith("LT") && details[1].endsWith("Khai"))
-				lecturerKhaiOfITFacultyResult.add(new lecturer(details[0],details[1], Integer.parseInt(details[2]), Double.parseDouble(details[3]), details[4], details[5], Integer.parseInt(details[6])));
+			if(lecturer_one.getFullName().endsWith("Khai"))
+			{
+				String[] details = lecturer_one.toString().split("_");
+				lecturerKhaiOfITFacultyList.add(new lecturer(details[0], details[1], Integer.parseInt(details[2]), Double.parseDouble(details[3]), details[4], details[5], Integer.parseInt(details[6])));
+			}
 		}
+
+		return lecturerKhaiOfITFacultyList;
 	}	
+
+
+
+
+
+
+
+
 
 
 
