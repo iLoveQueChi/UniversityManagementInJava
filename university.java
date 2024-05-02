@@ -74,7 +74,6 @@ public class university
 	public ArrayList<staff> getStaffList(String employeePath)
 	{
 		ArrayList<staff> staffList = new ArrayList<staff>();
-
 		for(employee employee_one  : this.employeeList)
 		{
 			if(employee_one.toString().startsWith("ST"))
@@ -83,7 +82,6 @@ public class university
 				staffList.add(new staff(details[0], details[1], Integer.parseInt(details[2]), Double.parseDouble(details[3]), details[4], details[5], Integer.parseInt(details[6])));
 			}
 		}
-
 		return staffList;
 	}
 
@@ -102,7 +100,6 @@ public class university
 				lecturerOfITFacultyList.add(new lecturer(details[0], details[1], Integer.parseInt(details[2]), Double.parseDouble(details[3]), details[4], details[5], Integer.parseInt(details[6])));
 			}
 		}
-
 		return lecturerOfITFacultyList;
 	}
 
@@ -121,11 +118,48 @@ public class university
 				lecturerKhaiOfITFacultyList.add(new lecturer(details[0], details[1], Integer.parseInt(details[2]), Double.parseDouble(details[3]), details[4], details[5], Integer.parseInt(details[6])));
 			}
 		}
-
 		return lecturerKhaiOfITFacultyList;
 	}	
 
+    private LinkedHashMap<String, Double> getWorkingDayOfLecturer(ArrayList<lecturer> lecturerList) 
+    {
+        LinkedHashMap<String, Double> lecturerWithID_WorkingDay = new LinkedHashMap<String, Double>();
+        for (String lecturer_one : this.workingDay) 
+	{
+            String[] details = lecturer_one.split(",");
+            if (details[0].startsWith("LT")) {
+                lecturerWithID_WorkingDay.put(details[0], Integer.parseInt(details[6]));
+        }
+        return lecturerWithID_WorkingDay;
+    }
 
+    private LinkedHashMap<String, Double> getWorkingDayOfStaff(ArrayList<staff> staffList) 
+    {
+        LinkedHashMap<String, Double> staffWithID_WorkingDay = new LinkedHashMap<String, Double>();
+        for (String lecturer_one : this.workingDay) 
+	{
+            String[] details = lecturer_one.split(",");
+            if (details[0].startsWith("ST")) {
+                staffWithID_WorkingDay.put(details[0], Integer.parseInt(details[6]));
+        }
+        return staffWithID_WorkingDay;
+    }
+	    
+    private LinkedHashMap<String, Double> getSalaryLecturer(ArrayList<lecturer> lecturerList, LinkedHashMap<String, Integer> lecturerWithID_WorkingDay) 
+    {
+        LinkedHashMap<String, Double> lecturerWithID_Salary = new LinkedHashMap<String, Double>();
+        for (lecturer lecturer_one : lecturerList) 
+	{
+            for (String key : lecturerWithID_WorkingDay.keySet()) 
+	    {
+                if (lecturer_one.getsID().equals(key)) 
+		{
+                    lecturerWithID_Salary.put(key, lecturer_one.getSalary(lecturerWithID_WorkingDay.get(key)));
+                }
+            }
+        }
+        return lecturerWithID_Salary;
+    }
 
 
 
