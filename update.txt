@@ -1,0 +1,10 @@
+Update features: 30.4.2024
+1. Load in employee's details from input file
+2. Select Lecturer only 
+3. Load in Staff's details only from input file
+4. Load in Lecture's details of IT faculty only from input file
+5. Load in Lecture's details of IT faculty whose name is "Khai" only from input file
+6. Get Salary of each Lecturer 
+
+
+loadFile

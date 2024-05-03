@@ -49,7 +49,7 @@ public class staff extends employee
 
 
 	@Override
-	public double getSalary(double allowance, double salaryCoefficient, int workingDay)
+	public double getSalary()
 	{
 		return super.salaryCoefficient*830 + super.allowance + workingDay*30;
 	}

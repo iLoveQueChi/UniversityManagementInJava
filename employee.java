@@ -78,7 +78,7 @@ public abstract class employee
 		return this.fullName + "_" + this.salaryCoefficient + "_" + this.workingDay;
 	}
 
-	public abstract double getSalary(double allowance, double salaryCoefficient, int workingDay);
+	public abstract double getSalary();
 
 }
 
