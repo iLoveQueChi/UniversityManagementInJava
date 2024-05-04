@@ -88,30 +88,71 @@
             <li> Chưa nghĩ ra :) </li> 
             <li> Chưa nghĩ ra :) </li>
         </ul>
-[mermaid](https://workflow.jace.pro/#/edit/eyJjb2RlIjoiY2xhc3NEaWFncmFtXG4gIGVtcGxveWVlIDx8LS0gc3RhZmZcbiAgZW1wbG95ZWUgPHwtLSBsZWN0dXJlclxuXG4gIGVtcGxveWVlIDogK1N0cmluZyBmdWxsTmFtZVxuICBlbXBsb3llZSA6ICtkb3VibGUgYWxsb3dhbmNlXG4gIGVtcGxveWVlIDogK2RvdWJsZSBzYWxhcnljb2VmZmljaWVudFxuXG4gIGVtcGxveWVlOiArZW1wbG95ZWUoU3RyaW5nIGZ1bGxOYW1lLCBkb3VibGUgYWxsb3dhbmNlLCBkb3VibGUgc2FsYXJ5Q29lZmZpY2llbnQpXG4gIGVtcGxveWVlOiArdG9TdHJpbmcoKSBTdHJpbmdcbiAgZW1wbG95ZWU6ICtnZXRBbGxvd2FuY2UoKSBkb3VibGVcbiAgZW1wbG95ZWU6ICtnZXRTYWxhcnlDb2VmZmljaWVudCgpIGRvdWJsZSAgXG4gIGVtcGxveWVlOiArZ2V0U2FsYXJ5KCkgZG91YmxlXG5cblxuICBjbGFzcyBzdGFmZntcbiAgICArU3RyaW5nIGJlYWtDb2xvclxuICAgICtzd2ltKClcbiAgICArcXVhY2soKVxuICB9XG4gIGNsYXNzIGxlY3R1cmVye1xuICAgIC1pbnQgc2l6ZUluRmVldFxuICAgIC1jYW5FYXQoKVxuICB9XG4iLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)
-
+        
+```mermaid
 classDiagram
-  employee <|-- staff
-  employee <|-- lecturer
 
-  employee : +String fullName
-  employee : +double allowance
-  employee : +double salarycoefficient
+employee <|-- staff
+employee <|-- lecturer
 
-  employee: +employee(String fullName, double allowance, double salaryCoefficient)
-  employee: +toString() String
-  employee: +getAllowance() double
-  employee: +getSalaryCoefficient() double  
-  employee: +getSalary() double
+<<abstract>> employee
+employee : #string fullName
+employee : #String employeeID
+employee : #double salaryCoefficient
+employee : #double allowance
+employee : #int workingDay
 
+employee : +employee(String employeeID, String fullName, double allowance, double salaryCoefficient, int workingDay)
 
-  class staff{
-    +String beakColor
-    +swim()
-    +quack()
+employee : +getFullName() String 
+employee : +getID() String
+employee : +getSalaryCoefficient() double
+employee : +getWorkingDay() int
+
+employee : +setFullName() void 
+employee : +setID() void
+employee : +setSalaryCoefficient() void
+employee : +setWorkingDay() void
+
+employee : +toString() String
+employee : +getSalary()* double
+employee : +getAllowance()* double 
+
+class staff{
+    +String department
+    +String duty
+
+    +staff(String employeeID, String fullName, double allowance, double salaryCoefficient, String department, String duty, int workingDay)
+    +getDepartment() String
+    +getDuty() String
+
+    +setDepartment() void
+    +setDuty() void
+
+    +getSalary() double 
+    +toString() String 
+    +getAllowance() double 
+}
+
+class lecturer{
+    +String faculty
+    +String degree
+
+    +lecturer(String employeeID, String fullName, double allowance, double salaryCoefficient, String department, String duty, int workingDay)
+    +getFaculty() String
+    +getDegree() String
+
+    +setFaculty() void
+    +setDegree() void
+
+    +getSalary() double 
+    +toString() String 
+    +getAllowance() double 
+}
+
+class university{
+    +
   }
-  class lecturer{
-    -int sizeInFeet
-    -canEat()
-  }
+
+```
 
