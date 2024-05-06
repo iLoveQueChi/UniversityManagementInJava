@@ -1,9 +1,10 @@
-LT1001, Doan Xuan Thanh, 100, 5.6, IT,                               Doctor,                    100
-ST1002, Doan Chi Binh,   88,  4.6, Financial department,             Head of department,        69
-ST1003, Lu Bo,           99,  6.8, Network adminstration department, Head of department,        88
-ST1004, Trieu Van,       70,  3.7, Network adminstration department, Deputy head of department, 88
-LT1005, Tran Trung Tin,  100, 7.6, IT,                               Doctor,                    110
-ST1006, Tran Dai Quang,  100, 6.9, Bussiness Adminstration,          Bachelor,                  120
-LT1007, Ton Nu Hue Tran, 100, 7.6, Social science and humanities,    Master,                    110
-ST1008, Nguyen Ba Dao,   89,  5.7, Security department,              Excutive staff,            99
-LT1009, Vo Van Khai,     100, 7.6, Sport science,                    Bachelor,                  50
+LT1001,Doan Xuan Thanh,5.6,100,IT,Doctor
+ST1002,Doan Chi Binh,4.6,69,Financial department,Head of department
+ST1003,Lu Bo,6.8,88,Network adminstration department,Head of department
+ST1004,Trieu Van,3.7,88,Network adminstration department,Deputy head of department
+LT1005,Tran Trung Tin,7.6,110,IT,Doctor
+ST1006,Tran Dai Quang,6.9,120,Bussiness Adminstration,Bachelor
+LT1007,Ton Nu Hue Tran,7.6,110,Social science and humanities,Master
+ST1008,Nguyen Ba Dao,5.7,99,Security department,Excutive staff
+LT1009,Vo Van Khai,7.6,50,Sport science,Bachelor
+LT1010,Tran Quang Khai, 5.0,100,IT,Bachelor
