@@ -1,36 +1,31 @@
 public abstract class employee
 {
 	// Attributes
-	protected String fullName;
 	protected String employeeID;
+	protected String fullName;
 	protected double salaryCoefficient;
-	protected double allowance;
 	protected int workingDay;
+	// allowance will be compute after load in employee's details. 
+	// So we dont put it the constructor and initialize it as a attributes
 
 	// Contrustor
-	public employee(String employeeID, String fullName, double allowance, double salaryCoefficient, int workingDay)
+	public employee(String employeeID, String fullName, double salaryCoefficient, int workingDay)
 	{
-		this.fullName = fullName;
 		this.employeeID = employeeID;
-		this.allowance = 0;
+		this.fullName = fullName;
 		this.salaryCoefficient = salaryCoefficient;
 		this.workingDay = workingDay;
 	}
 
 	// Getter
-	public String getFullName()
-	{
-		return this.fullName;
-	}
-
 	public String getID()
 	{
 		return this.employeeID;
 	}
 
-	public double getAllowance()
+	public String getFullName()
 	{
-		return this.allowance;
+		return this.fullName;
 	}
 
 	public double getSalaryCoefficient()
@@ -38,11 +33,10 @@ public abstract class employee
 		return this.salaryCoefficient;
 	}
 
-	public int getworkingDay()
+	public int getWorkingDay()
 	{
 		return this.workingDay;
 	}
-
 
 
 	// Setter
@@ -54,11 +48,6 @@ public abstract class employee
 	public void setID(String newID)
 	{
 		this.employeeID = newID;
-	}
-
-	public void setAllowance(double newAllowance)
-	{
-		this.allowance = newAllowance;
 	}
 
 	public void setSalaryCoefficient(double newSalaryCoefficient)
@@ -75,10 +64,11 @@ public abstract class employee
 	@Override
 	public String toString() 
 	{
-		return this.fullName + "_" + this.salaryCoefficient + "_" + this.workingDay;
+		return this.employeeID + "_" + this.fullName + "_" + this.salaryCoefficient + "_" + this.workingDay;
 	}
 
 	public abstract double getSalary();
-
+	public abstract double getAllowance();
+//
 }
 
