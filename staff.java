@@ -5,7 +5,8 @@ public class staff extends employee
 	private String duty;
 
 	// Constructor
-	public staff(String employeeID, String fullName, double salaryCoefficient, String department, String duty, int workingDay)
+
+	public staff(String employeeID, String fullName, double salaryCoefficient, int workingDay, String department, String duty)
 	{
 		super(employeeID, fullName, salaryCoefficient, workingDay);
 		this.department = department;
@@ -23,7 +24,6 @@ public class staff extends employee
 		return this.duty;
 	}
 
-
 	// Setter
 	public void setDepartment(String newDepartment)
 	{
@@ -39,13 +39,13 @@ public class staff extends employee
 	@Override
 	public double getSalary()
 	{
-		return super.salaryCoefficient*830 + getAllowance() + workingDay*30;
+		return super.salaryCoefficient*830000 + getAllowance() + workingDay*50;
 	}
 
 	@Override
-	public String toString()
+	public String toString() // this.employeeID + "_" + this.fullName + "_" + this.salaryCoefficient + "_" + this.workingDay + "_" + this.department + "_" + this.duty;
 	{
-		return super.toString() + "_" + getAllowance() + "_" + this.department + "_" + this.duty;
+		return super.toString() + "_" + this.department + "_" + this.duty + "_" + getAllowance();
 	}
 
 	@Override
@@ -53,13 +53,11 @@ public class staff extends employee
 	{
 		int allowance = 0;
 		if(this.duty.equals("Excutive Staff"))
-			allowance = 500;
+			allowance = 500000;
 		else if(this.duty.equals("Deputy head of department"))
-			allowance = 100;
+			allowance = 100000;
 		else if(this.duty.equals("Head of department"))
-			allowance = 1300;
-
+			allowance = 1300000;
 		return allowance;
 	}
-	//
 }
