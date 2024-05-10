@@ -11,22 +11,32 @@ public class menu
 		do 
 		{
 			System.out.println("Select a function from 1 to 10:\n");
+
+			// System.out.println(" .----------------.  .----------------.  .----------------.  .----------------.  .----------------.  .----------------.  .----------------.  .----------------.  .----------------.  .----------------.   .----------------.  .----------------.  .----------------.  .----------------.  .----------------.  .----------------.   .----------------.  .----------------.   .----------------.  .-----------------. .----------------.  .----------------.  .----------------.  .----------------.  .----------------.  .----------------.  .----------------.  .----------------.   .----------------.  .----------------.  .-----------------. .----------------.  .----------------.  .----------------.  .----------------.  .----------------.  .-----------------. .----------------. ");
+			// System.out.println("| .--------------. || .--------------. || .--------------. || .--------------. || .--------------. || .--------------. || .--------------. || .--------------. || .--------------. || .--------------. | | .--------------. || .--------------. || .--------------. || .--------------. || .--------------. || .--------------. | | .--------------. || .--------------. | | .--------------. || .--------------. || .--------------. || .--------------. || .--------------. || .--------------. || .--------------. || .--------------. || .--------------. || .--------------. | | .--------------. || .--------------. || .--------------. || .--------------. || .--------------. || .--------------. || .--------------. || .--------------. || .--------------. || .--------------. |");
+			// System.out.println("| |  _________   | || | ____    ____ | || |   ______     | || |   _____      | || |     ____     | || |  ____  ____  | || |  _________   | || |  _________   | || |      _       | || |    _______   | | | |    _______   | || |      __      | || |   _____      | || |      __      | || |  _______     | || |  ____  ____  | | | |     ____     | || |  _________   | | | | _____  _____ | || | ____  _____  | || |     _____    | || | ____   ____  | || |  _________   | || |  _______     | || |    _______   | || |     _____    | || |  _________   | || |  ____  ____  | | | | ____    ____ | || |      __      | || | ____  _____  | || |      __      | || |    ______    | || |  _________   | || | ____    ____ | || |  _________   | || | ____  _____  | || |  _________   | |");
+			// System.out.println("| | |_   ___  |  | || ||_      /   _|| || |  |_   __ \   | || |  |_   _|     | || |   .'    `.   | || | |_  _||_  _| | || | |_   ___  |  | || | |_   ___  |  | || |     | |      | || |   /  ___  |  | | | |   /  ___  |  | || |     /        | || |  |_   _|     | || |     /  \     | || | |_   __ \    | || | |_  _||_  _| | | | |   .'    `.   | || | |_   ___  |  | | | ||_   _||_   _|| || ||_   \|_   _| | || |    |_   _|   | || ||_  _| |_  _| | || | |_   ___  |  | || | |_   __ \    | || |   /  ___  |  | || |    |_   _|   | || | |  _   _  |  | || | |_  _||_  _| | | | ||_   \  /   _|| || |     /  \     | || ||_   \|_   _| | || |     /  \     | || |  .' ___  |   | || | |_   ___  |  | || ||_   \  /   _|| || | |_   ___  |  | || ||_   \|_   _| | || | |  _   _  |  | |");
+			// System.out.println("| |   | |_  \_|  | || |  |    /   |  | || |    | |__) |  | || |    | |       | || |  /  .--.  \  | || |   \ \  / /   | || |   | |_  \_|  | || |   | |_  \_|  | || |     \_|      | || |  |  (__ \_|  | | | |  |  (__ \_|  | || |    / /\ \    | || |    | |       | || |    / /\ \    | || |   | |__) |   | || |   \ \  / /   | | | |  /  .--.  \  | || |   | |_  \_|  | | | |  | |    | |  | || |  |   \ | |   | || |      | |     | || |  \ \   / /   | || |   | |_  \_|  | || |   | |__) |   | || |  |  (__ \_|  | || |      | |     | || | |_/ | | \_|  | || |   \ \  / /   | | | |  |   \/   |  | || |    / /\ \    | || |  |   \ | |   | || |    / /\ \    | || | / .'   \_|   | || |   | |_  \_|  | || |  |   \/   |  | || |   | |_  \_|  | || |  |   \ | |   | || | |_/ | | \_|  | |");
+			// System.out.println("| |   |  _|  _   | || |  | |\  /| |  | || |    |  ___/   | || |    | |   _   | || |  | |    | |  | || |    \ \/ /    | || |   |  _|  _   | || |   |  _|  _   | || |              | || |   '.___`-.   | | | |   '.___`-.   | || |   / ____ \   | || |    | |   _   | || |   / ____ \   | || |   |  __ /    | || |    \ \/ /    | | | |  | |    | |  | || |   |  _|      | | | |  | '    ' |  | || |  | |\ \| |   | || |      | |     | || |   \ \ / /    | || |   |  _|  _   | || |   |  __ /    | || |   '.___`-.   | || |      | |     | || |     | |      | || |    \ \/ /    | | | |  | |\  /| |  | || |   / ____ \   | || |  | |\ \| |   | || |   / ____ \   | || | | |    ____  | || |   |  _|  _   | || |  | |\  /| |  | || |   |  _|  _   | || |  | |\ \| |   | || |     | |      | |");
+			// System.out.println("| |  _| |___/ |  | || | _| |_\/_| |_ | || |   _| |_      | || |   _| |__/ |  | || |  \  `--'  /  | || |    _|  |_    | || |  _| |___/ |  | || |  _| |___/ |  | || |              | || |  |`\____) |  | | | |  |`\____) |  | || | _/ /    \ \_ | || |   _| |__/ |  | || | _/ /    \ \_ | || |  _| |  \ \_  | || |    _|  |_    | | | |  \  `--'  /  | || |  _| |_       | | | |   \ `--' /   | || | _| |_\   |_  | || |     _| |_    | || |    \ ' /     | || |  _| |___/ |  | || |  _| |  \ \_  | || |  |`\____) |  | || |     _| |_    | || |    _| |_     | || |    _|  |_    | | | | _| |_\/_| |_ | || | _/ /    \ \_ | || | _| |_\   |_  | || | _/ /    \ \_ | || | \ `.___]  _| | || |  _| |___/ |  | || | _| |_\/_| |_ | || |  _| |___/ |  | || | _| |_\   |_  | || |    _| |_     | |");
+			// System.out.println("| | |_________|  | || ||_____||_____|| || |  |_____|     | || |  |________|  | || |   `.____.'   | || |   |______|   | || | |_________|  | || | |_________|  | || |              | || |  |_______.'  | | | |  |_______.'  | || ||____|  |____|| || |  |________|  | || ||____|  |____|| || | |____| |___| | || |   |______|   | | | |   `.____.'   | || | |_____|      | | | |    `.__.'    | || ||_____|\____| | || |    |_____|   | || |     \_/      | || | |_________|  | || | |____| |___| | || |  |_______.'  | || |    |_____|   | || |   |_____|    | || |   |______|   | | | ||_____||_____|| || ||____|  |____|| || ||_____|\____| | || ||____|  |____|| || |  `._____.'   | || | |_________|  | || ||_____||_____|| || | |_________|  | || ||_____|\____| | || |   |_____|    | |");
+			// System.out.println("| |              | || |              | || |              | || |              | || |              | || |              | || |              | || |              | || |              | || |              | | | |              | || |              | || |              | || |              | || |              | || |              | | | |              | || |              | | | |              | || |              | || |              | || |              | || |              | || |              | || |              | || |              | || |              | || |              | | | |              | || |              | || |              | || |              | || |              | || |              | || |              | || |              | || |              | || |              | |");
+			// System.out.println("| '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' | | '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' | | '--------------' || '--------------' | | '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' | | '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' |");
+			// System.out.println("'----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'   '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'   '----------------'  '----------------'   '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'   '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------' ");
 			
 			// List of function can be use
-			System.out.println("1. Load in the list of employee's details ");
-			System.out.println("2. Print out the list of IT lecturer ");
-			System.out.println("3. Print out the salary of IT lecturer whose name is Khai ");
-			System.out.println("4. Print out the employee has the highest salary");
-			System.out.println("5. Increase salary coefficient of all employee by 0.1 ");
+			System.out.println("1. Load in the list of employee's details");
+			System.out.println("2. Print out the list of IT lecturer");
+			System.out.println("3. Print out the list of lecturer");
+			System.out.println("4. Print out the list of staff");
+			System.out.println("5. Print out the salary of IT lecturer whose name is Khai");
+			System.out.println("6. Print out the employee has the highest salary");
+			System.out.println("7. Increase salary coefficient of all employee by 0.1 ");
+			System.out.println("8. Decrease salary coefficient of all employee by 0.1 ");			
+			System.out.println("9. Print out the total salary of the whole lecture and executive staff");
+			System.out.println("10. Print out the lecture and executive staff who have salary more than 5.500.000 VND");
 
-			System.out.println("5. Print out the total salary of the whole lecture and executive staff");
-			System.out.println("6. Print out the lecture and executive staff who have salary more than 15.000.000 VND");
-			System.out.println("7. Print out salaries of staff and faculty in descending order");
-			System.out.println("8. Print out salaries of staff and faculty in ascending order");
-			System.out.println("9. ");
-			System.out.println("10. \n");
-
-			System.out.printf("Your choice: ");
+			System.out.printf("----------------------------Your choice: ");
 			int choice = input.nextInt();
 
 			switch (choice) 
@@ -40,42 +50,46 @@ public class menu
 					System.out.println("System will handle function 2 ...");
 					System.out.println("The list of IT lecturer:" + "\n");
 					tdtu.printOutITLecturer();
-					break;
 				case 3:
 					System.out.println("System will handle function 3 ...");
-					System.out.println("Salary of IT lecturer whose name is Khai" + "\n");
-					tdtu.printOutSalaryOFITLecturerKhai();
+					System.out.println("The list of lecturer:" + "\n");
+					tdtu.printOutLecturer();					
 					break;
 				case 4:
 					System.out.println("System will handle function 4 ...");
-					System.out.println("The employee has the highest salary" + "\n");
-					tdtu.printOutTheEmployeeWhoseHasTheHighestSalary();
-					break;
+					System.out.println("The list of staff:" + "\n");
+					tdtu.printOutStaff();
+					break;					
 				case 5:
 					System.out.println("System will handle function 5 ...");
-					System.out.println("Salary of all employee after Increase salary coefficient by 0.1" + "\n");
-					tdtu.printOutSalaryOfEmployeeAfterIncreaseSalaryCoefficient();
+					System.out.println("Salary of IT lecturer whose name is Khai" + "\n");
+					tdtu.printOutSalaryOFITLecturerKhai();
 					break;
 				case 6:
 					System.out.println("System will handle function 6 ...");
-					System.out.println("" + "\n");
+					System.out.println("The employee has the highest salary" + "\n");
+					tdtu.printOutEmployeeWhoseHasTheHighestSalary();
 					break;
 				case 7:
 					System.out.println("System will handle function 7 ...");
-					System.out.println("" + "\n");
-					break;		
+					System.out.println("Salary of all employee after Increase salary coefficient by 0.1" + "\n");
+					tdtu.printOutSalaryOfEmployeeAfterIncreaseSalaryCoefficient(0.1);
+					break;
 				case 8:
-					System.out.println("System will handle function 8 ...");
-					System.out.println("" + "\n");
+					System.out.println("System will handle function 7 ...");
+					System.out.println("Salary of all employee after decrease salary coefficient by 0.1" + "\n");
+					tdtu.printOutSalaryOfEmployeeAfterDecreaseSalaryCoefficient(0.2);
 					break;
 				case 9:
-					System.out.println("System will handle function 9 ...");
-					System.out.println("" + "\n");
+					System.out.println("System will handle function 8 ...");
+					System.out.println("Total of salary university have to pay for its employee: ");
+					tdtu.printOutTotalSalaryOfEmployee();
 					break;
 				case 10:
 					System.out.println("System will handle function 10 ...");
-					System.out.println("" + "\n");
-					break;																		
+					System.out.println("Print out the lecture and executive staff who have salary more than 5.500.000 VND" + "\n");
+					tdtu.printOutEmployeeHaveSalaryHigherThan(5500000.00);
+					break;																			
 				default:
 					System.out.println("Good bye");
 					status = false;
