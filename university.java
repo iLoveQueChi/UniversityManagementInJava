@@ -1,5 +1,4 @@
 /*
-
  .----------------.  .----------------.  .----------------.  .-----------------. .----------------.   .----------------.  .----------------.  .----------------.                                                             
 | .--------------. || .--------------. || .--------------. || .--------------. || .--------------. | | .--------------. || .--------------. || .--------------. |                                                            
 | |    ___       | || | _____  _____ | || |      __      | || | ____  _____  | || |    ______    | | | |  ____  ____  | || | _____  _____ | || |  ____  ____  | |                                                            
@@ -33,35 +32,38 @@
 | |              | || |              | || |              | || |              | || |              | | | |              | || |              | || |              | || |              | || |              | || |              | |
 | '--------------' || '--------------' || '--------------' || '--------------' || '--------------' | | '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' |
  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'   '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------' 
-
 */
 
-
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.*;
 import java.io.*;
-import java.text.DecimalFormat;
 
 
-public class university
-{
+import java.util.Collections; 
+import java.util.Comparator; 
+import java.util.LinkedHashMap; 
+import java.util.Map.*; 
+
+
+public class university {
 	/*----------------------------------------------------------------------Attributes----------------------------------------------------------------------*/
 	private ArrayList<employee> employeeList;    // employeeID, fullName,  salaryCoefficient, workingDay
 	// private ArrayList<lecturer> lecturerList; // employeeID, fullName,  salaryCoefficient, workingDay, faculty,    degree
 	// private ArrayList<staff> staffList;		 // employeeID, fullName,  salaryCoefficient, workingDay, department, duty
+
 	DecimalFormat decimalFormat = new DecimalFormat("#,###.00");
 	/*----------------------------------------------------------------------Attributes----------------------------------------------------------------------*/
 
 
 	/*----------------------------------------------------------------------Constructor--------------------------------------------------------------------*/
-	public university(String employeePath)
-	{
+	public university(String employeePath) {
 		this.employeeList = loadInEmployeeList(employeePath); // C:\\Users\\Nguyen Quang Huy\\Desktop\\EmployeeManagementSystemInJva\\employeeDetails.txt
 
 		// format of the input file: employeeID,fullName,salaryCoefficient,workingDay,faculty/department,degree/duty with no spaces
 			// E.g: LT1001,Doan Xuan Thanh,5.6,100,IT,Doctor
-		// allowance will be compute by getAllowance() method in class staff, lecturer after we know employee's salaryCoefficient, degree and workingDay  
+		// allowance will be compute by getAllowance() method in class staff and lecturer after we know employee's salaryCoefficient, degree and workingDay  
 			// Also allowance will not initialize as a variable and not available in input file
 
 		// this.lecturerList = getLecturerList();
@@ -71,60 +73,44 @@ public class university
 
 
 	/*----------------------------------------------------------------------Getters------------------------------------------------------------------------*/
-	public ArrayList<employee> getEmployeeList()
-	{
+	public ArrayList<employee> getEmployeeList() {
 		return this.employeeList;
 	}
 	/*----------------------------------------------------------------------Getters------------------------------------------------------------------------*/
 
 
 	/*----------------------------------------------------------------------Setters------------------------------------------------------------------------*/
-	public void setEmployeeList(ArrayList<employee> newEmployeeList)
-	{
+	public void setEmployeeList(ArrayList<employee> newEmployeeList) {
 		this.employeeList = newEmployeeList;
 	}
-
-	// public void setLecturerList(ArrayList<lecturer> newLecturerList)
-	// {
-	// 	this.lecturerList = newLecturerList;
-	// }
-
-	// public void setStaffList(ArrayList<staff> newStaffList)
-	// {
-	// 	this.staffList = newStaffList;
-	// }
 	/*----------------------------------------------------------------------Setters------------------------------------------------------------------------*/
 
 
 	/*--------------------------------------------------------------------Main Method----------------------------------------------------------------------*/
 	// 1. Load in employee details by loadFile method. Store it in a dynamic array: ArrayList with data type is employee
-	public ArrayList<employee> loadInEmployeeList(String employeePath) 
-	{
-		ArrayList<employee> employeeResult = new ArrayList<employee>();
+	public ArrayList<employee> loadInEmployeeList(String employeePath) {
+		ArrayList<employee> employeeList = new ArrayList<employee>();
 
-		ArrayList<String> employeeList =  loadFile(employeePath);
+		ArrayList<String> employeeList_String =  loadFile(employeePath);
 
-		for(String employee_one : employeeList)
-		{
+		for(String employee_one : employeeList_String) {
 			String[] details = employee_one.split(",");
-			if(details[0].startsWith("LT")) // LT1001,Doan Xuan Thanh,5.6,100,IT,Doctor
-				employeeResult.add(new lecturer(details[0], details[1], Double.parseDouble(details[2]), Integer.parseInt(details[3]), details[4], details[5]));
-			else if(details[0].startsWith("ST")) // 
-				employeeResult.add(new staff(details[0], details[1], Double.parseDouble(details[2]), Integer.parseInt(details[3]), details[4], details[5]));
+			if(details[0].startsWith("LT")) {
+				employeeList.add(new lecturer(details[0], details[1], Double.parseDouble(details[2]), Integer.parseInt(details[3]), details[4], details[5]));
+			}
+			else if(details[0].startsWith("ST")) 
+				employeeList.add(new staff(details[0], details[1], Double.parseDouble(details[2]), Integer.parseInt(details[3]), details[4], details[5]));
 		}
 
-		return employeeResult;
+		return employeeList;
 	}
 
 	// 2. Get lecturerList from employeeList
-	public ArrayList<lecturer> getLecturerList()
-	{
+	public ArrayList<lecturer> getLecturerList(ArrayList<employee> employeeList) {
 		ArrayList<lecturer> lecturerList = new ArrayList<lecturer>();		
 
-		for(employee employee_one  : this.employeeList)
-		{
-			if(employee_one.getID().startsWith("LT"))
-			{
+		for(employee employee_one  : employeeList) {
+			if(employee_one.getEmployeeID().startsWith("LT")) {
 				String[] details = employee_one.toString().split("_"); 
 				lecturerList.add(new lecturer(details[0], details[1], Double.parseDouble(details[2]), Integer.parseInt(details[3]), details[4], details[5]));
 			}
@@ -134,13 +120,12 @@ public class university
 	}
 
 	// 3. Get staffList from employeeList
-	public ArrayList<staff> getStaffList()
-	{
+	public ArrayList<staff> getStaffList(ArrayList<employee> employeeList) {
 		ArrayList<staff> staffList = new ArrayList<staff>();
 
-		for(employee employee_one  : this.employeeList)
+		for(employee employee_one  : employeeList)
 		{
-			if(employee_one.getID().startsWith("ST"))
+			if(employee_one.getEmployeeID().startsWith("ST"))
 			{
 				String[] details = employee_one.toString().split("_");
 				staffList.add(new staff(details[0], details[1], Double.parseDouble(details[2]), Integer.parseInt(details[3]), details[4], details[5]));
@@ -151,9 +136,8 @@ public class university
 	}
 
 	// 4. Get ITlecturerList from employeeList
-	public ArrayList<lecturer> getLecturerOfITFaculty()
-	{
-		ArrayList<lecturer> lecturerList = getLecturerList();
+	public ArrayList<lecturer> getLecturerOfITFaculty() {
+		ArrayList<lecturer> lecturerList = getLecturerList(this.employeeList);
 		ArrayList<lecturer> lecturerOfITFacultyList = new ArrayList<lecturer>();
 
 		for(lecturer lecturer_one : lecturerList)
@@ -168,34 +152,13 @@ public class university
 		return lecturerOfITFacultyList;
 	}
 
-	// 5. Get lecturer whose name is Khai from ITLecturerList
-	// public ArrayList<lecturer> getLecturerKhaiOfITFaculty()
-	// {
-	// 	ArrayList<lecturer> lecturerOfITFacultyList = getLecturerOfITFaculty();
-	// 	ArrayList<lecturer> lecturerKhaiOfITFacultyList = new ArrayList<lecturer>();
-
-	// 	for(lecturer lecturer_one : lecturerOfITFacultyList)
-	// 	{
-	// 		if(lecturer_one.getFullName().endsWith("Khai"))
-	// 		{
-	// 			String[] details = lecturer_one.toString().split("_");
-	// 			lecturerKhaiOfITFacultyList.add(new lecturer(details[0], details[1], Double.parseDouble(details[2]), details[3], details[4], Integer.parseInt(details[5])));
-	// 		}
-	// 	}
-
-	// 	return lecturerKhaiOfITFacultyList;
-	// }	
-
-	// 6. Get specific lecturer by their name from ITLecturerList 
-	public ArrayList<lecturer> getSpecificLecturerOFITFaculty(String name) // name = "Khai"
-	{
+	// 7. Get specific lecturer by their name from ITLecturerList 
+	public ArrayList<lecturer> getSpecificLecturerOFITFaculty_ByName(String name) {
 		ArrayList<lecturer> lecturerOfITFacultyList = getLecturerOfITFaculty();
 		ArrayList<lecturer> specificLecturerOfITFacultyList = new ArrayList<lecturer>();
 
-		for(lecturer lecturer_one : lecturerOfITFacultyList)
-		{
-			if(lecturer_one.getFullName().endsWith(name))
-			{
+		for(lecturer lecturer_one : lecturerOfITFacultyList) {
+			if(lecturer_one.getFullName().endsWith(name)) {
 				String[] details = lecturer_one.toString().split("_");
 				specificLecturerOfITFacultyList.add(new lecturer(details[0], details[1], Double.parseDouble(details[2]), Integer.parseInt(details[3]), details[4], details[5]));
 			}
@@ -204,158 +167,134 @@ public class university
 		return specificLecturerOfITFacultyList;
 	}
 
-	// 7. Get employeeID and workingDay of lecturer
-    public LinkedHashMap<String, Integer> getLecturerWithID_WorkingDay() 
-    {
-    	ArrayList<lecturer> lecturerList = getLecturerList();
-        LinkedHashMap<String, Integer> lecturerWithID_WorkingDay = new LinkedHashMap<String, Integer>();
+	// 8. Get employeeID and workingDay of lecturer
+    public LinkedHashMap<String, Integer> getEmployeeID_WorkingDayOfLecturer() {
+    	ArrayList<lecturer> lecturerList = getLecturerList(this.employeeList);
+        LinkedHashMap<String, Integer> employeeID_WorkingDayOfLecturer = new LinkedHashMap<String, Integer>();
 
-        for(lecturer lecturer_one : lecturerList) 
-		{
+        for(lecturer lecturer_one : lecturerList) {
             String[] details = lecturer_one.toString().split("_");
-            lecturerWithID_WorkingDay.put(details[0], Integer.parseInt(details[3]));            	
+            employeeID_WorkingDayOfLecturer.put(details[0], Integer.parseInt(details[3]));            	
         }
 
-        return lecturerWithID_WorkingDay;
+        return employeeID_WorkingDayOfLecturer;
     }
 
-    // 8. Get employeeID and workingDay of staff
-    public LinkedHashMap<String, Integer> getStaffWithID_WorkingDay() 
-    {
-		ArrayList<staff> staffList = getStaffList();    	
-        LinkedHashMap<String, Integer> staffWithID_WorkingDay = new LinkedHashMap<String, Integer>();
+    // 9. Get employeeID and workingDay of staff
+    public LinkedHashMap<String, Integer> getEmployeeID_WorkingDayOfStaff() {
+		ArrayList<staff> staffList = getStaffList(this.employeeList);    	
+        LinkedHashMap<String, Integer> employeeID_WorkingDayOfStaff = new LinkedHashMap<String, Integer>();
 
-        for(staff staff_one : staffList) 
-		{
+        for(staff staff_one : staffList) {
             String[] details = staff_one.toString().split("_");
-            staffWithID_WorkingDay.put(details[0], Integer.parseInt(details[3]));         	
+            employeeID_WorkingDayOfStaff.put(details[0], Integer.parseInt(details[3]));         	
         }
         
-        return staffWithID_WorkingDay;
+        return employeeID_WorkingDayOfStaff;
     }
 
-    // 9. Get the staff who work hardest
-    public LinkedHashMap<String, Integer> getStaffWorkHardest_WithID()
-    {
-    	LinkedHashMap<String, Integer> staffWithID_WorkingDay = getStaffWithID_WorkingDay(); 
-
-		LinkedHashMap<String, Integer> staffWorkHardest_WithID = new LinkedHashMap<String, Integer>();
+    // 10. Get the staff who work hardest
+    public LinkedHashMap<String, Integer> getEmployeeID_WorkingDayOfHardestStaff() {
+    	LinkedHashMap<String, Integer> employeeID_WorkingDayOfStaff = getEmployeeID_WorkingDayOfStaff(); 
+		LinkedHashMap<String, Integer> employeeID_WorkingDayOfHardestStaff = new LinkedHashMap<String, Integer>();
 
    		String key_max = "";
-   		int values_max = Collections.max(staffWithID_WorkingDay.values());
+   		int values_max = Collections.max(employeeID_WorkingDayOfStaff.values());
 
-   		for(String key : staffWithID_WorkingDay.keySet())
-   		{
-   			if(values_max == staffWithID_WorkingDay.get(key))
-   			{
-   				staffWorkHardest_WithID.put(key, staffWithID_WorkingDay.get(key));
+   		for(String key : employeeID_WorkingDayOfStaff.keySet()) {
+   			if(values_max == employeeID_WorkingDayOfStaff.get(key)) {
+   				employeeID_WorkingDayOfHardestStaff.put(key, employeeID_WorkingDayOfStaff.get(key));
    			}
    		}
 
-   		return staffWorkHardest_WithID;
+   		return employeeID_WorkingDayOfHardestStaff;
     }
 
-    // 10. Get the lecturer who work hardest
-    public LinkedHashMap<String, Integer> getLecturerWorkHardest_WithID()
-    {
-    	LinkedHashMap<String, Integer> lecturerWithID_WorkingDay = getLecturerWithID_WorkingDay(); 
+    // 11. Get the lecturer who work hardest
+    public LinkedHashMap<String, Integer> getEmployeeID_WorkingDayOfHardestLecturer() {
+    	LinkedHashMap<String, Integer> employeeID_WorkingDayOfLecturer = getEmployeeID_WorkingDayOfLecturer(); 
 
-		LinkedHashMap<String, Integer> lecturerWorkHardest_WithID = new LinkedHashMap<String, Integer>();
+		LinkedHashMap<String, Integer> employeeID_WorkingDayOfHardestLecturer = new LinkedHashMap<String, Integer>();
 
    		String key_max = "";
-   		int values_max = Collections.max(lecturerWithID_WorkingDay.values());
+   		int values_max = Collections.max(employeeID_WorkingDayOfLecturer.values());
 
-   		for(String key : lecturerWithID_WorkingDay.keySet())
-   		{
-   			if(values_max == lecturerWithID_WorkingDay.get(key))
-   			{
-   				lecturerWorkHardest_WithID.put(key, lecturerWithID_WorkingDay.get(key));
+   		for(String key : employeeID_WorkingDayOfLecturer.keySet()) {
+   			if(values_max == employeeID_WorkingDayOfLecturer.get(key)) {
+   				employeeID_WorkingDayOfHardestLecturer.put(key, employeeID_WorkingDayOfLecturer.get(key));
    			}
    		}
 
-   		return lecturerWorkHardest_WithID;
+   		return employeeID_WorkingDayOfHardestLecturer;
     }
 	  
-    // 11. Get employeeID and salary of lecturer
-    public LinkedHashMap<String, Double> getLecturerWithID_Salary()
-    {
-		ArrayList<lecturer> lecturerList = getLecturerList();
-   		LinkedHashMap<String, Double> lecturerWithID_Salary = new LinkedHashMap<String, Double>();
+    // 12. Get employeeID and salary of lecturer
+    public LinkedHashMap<String, Double> getEmployeeID_SalaryOfLecturer() {
+		ArrayList<lecturer> lecturerList = getLecturerList(this.employeeList);
+   		LinkedHashMap<String, Double> employeeID_SalaryOfLecturer = new LinkedHashMap<String, Double>();
 
-   		for(lecturer lecturer_one : lecturerList)
-   		{
-   			lecturerWithID_Salary.put(lecturer_one.getID(), lecturer_one.getSalary());
+   		for(lecturer lecturer_one : lecturerList) {
+   			employeeID_SalaryOfLecturer.put(lecturer_one.getEmployeeID(), lecturer_one.getSalary());
    		}
 
-   		return lecturerWithID_Salary;
+   		return employeeID_SalaryOfLecturer;
     }
 
-    // 12. Get employeeID and salary of staff
-    public LinkedHashMap<String, Double> getStaffWithID_Salary()
-    {
-		ArrayList<staff> staffList = getStaffList();    	
-   		LinkedHashMap<String, Double> staffWithID_Salary = new LinkedHashMap<String, Double>();
+    // 13. Get employeeID and salary of staff
+    public LinkedHashMap<String, Double> getEmployeeID_SalaryOfStaff() {
+		ArrayList<staff> staffList = getStaffList(this.employeeList);    	
+   		LinkedHashMap<String, Double> employeeID_SalaryOfStaff = new LinkedHashMap<String, Double>();
 
-   		for(staff staff_one : staffList)
-   		{
-   			staffWithID_Salary.put(staff_one.getID(), staff_one.getSalary());
+   		for(staff staff_one : staffList) {
+   			employeeID_SalaryOfStaff.put(staff_one.getEmployeeID(), staff_one.getSalary());
    		}
 
-   		return staffWithID_Salary;
+   		return employeeID_SalaryOfStaff;
     }
 
-   	// 13. Get the lecturer who has the highest salary
-    public LinkedHashMap<String, Double> getLecturerHighestSalary()
-    {
-    	LinkedHashMap<String, Double> lecturerWithID_Salary = getLecturerWithID_Salary(); 
+   	// 14. Get the lecturer who has the highest salary
+    public LinkedHashMap<String, Double> getEmployeeID_HighestSalaryOfLecturer() {
+    	LinkedHashMap<String, Double> employeeID_SalaryOfLecturer = getEmployeeID_SalaryOfLecturer(); 
 
-		LinkedHashMap<String, Double> lecturerWithID_HighestSalary = new LinkedHashMap<String, Double>();
+		LinkedHashMap<String, Double> employeeID_HighestSalaryOfLecturer = new LinkedHashMap<String, Double>();
 
    		String key_max = "";
-   		double values_max = Collections.max(lecturerWithID_Salary.values());
+   		double values_max = Collections.max(employeeID_SalaryOfLecturer.values());
 
-   		for(String key : lecturerWithID_Salary.keySet())
-   		{
-   			if(values_max == lecturerWithID_Salary.get(key))
-   			{
-   				lecturerWithID_HighestSalary.put(key, lecturerWithID_Salary.get(key));
+   		for(String key : employeeID_SalaryOfLecturer.keySet()) {
+   			if(values_max == employeeID_SalaryOfLecturer.get(key)) {
+   				employeeID_HighestSalaryOfLecturer.put(key, employeeID_SalaryOfLecturer.get(key));
    			}
    		}
 
-   		return lecturerWithID_HighestSalary;
+   		return employeeID_HighestSalaryOfLecturer;
     }
 
-   	// 14. Get the staff who has the highest salary
-    public LinkedHashMap<String, Double> getStaffHighestSalary()
-    {
-    	LinkedHashMap<String, Double> staffWithID_Salary = getStaffWithID_Salary(); 
+   	// 15. Get the staff who has the highest salary
+    public LinkedHashMap<String, Double> getEmployeeID_HighestSalaryOfStaff() {
+    	LinkedHashMap<String, Double> employeeID_SalaryOfStaff = getEmployeeID_SalaryOfStaff(); 
 
-		LinkedHashMap<String, Double> staffWithID_HighestSalary = new LinkedHashMap<String, Double>();
+		LinkedHashMap<String, Double> employeeID_HighestSalaryOfStaff = new LinkedHashMap<String, Double>();
 
    		String key_max = "";
-   		double values_max = Collections.max(staffWithID_Salary.values());
+   		double values_max = Collections.max(employeeID_SalaryOfStaff.values());
 
-   		for(String key : staffWithID_Salary.keySet())
-   		{
-   			if(values_max == staffWithID_Salary.get(key))
-   			{
-   				staffWithID_HighestSalary.put(key, staffWithID_Salary.get(key));
+   		for(String key : employeeID_SalaryOfStaff.keySet()) {
+   			if(values_max == employeeID_SalaryOfStaff.get(key)) {
+   				employeeID_HighestSalaryOfStaff.put(key, employeeID_SalaryOfStaff.get(key));
    			}
    		}
 
-   		return staffWithID_HighestSalary;
+   		return employeeID_HighestSalaryOfStaff;
     }
  
-    public ArrayList<lecturer> fromID_PrintOutAllDetailsOfLecturer(LinkedHashMap<String, Double> dmcuocdoi)
-    {
+ 	// 16.
+    public ArrayList<lecturer> getLecturerFromID(LinkedHashMap<String, Double> employeeID) {
     	ArrayList<lecturer> lecturerListFromID = new ArrayList<lecturer>();
 
-    	for(String key : dmcuocdoi.keySet())
-    	{
-    		for(lecturer lecturer_one : getLecturerList())
-    		{
-    			if(key.equals(lecturer_one.getID()))
-    			{	
+    	for(String key : employeeID.keySet()) {
+    		for(lecturer lecturer_one : getLecturerList(this.employeeList)) {
+    			if(key.equals(lecturer_one.getEmployeeID())) {	
     				String[] details = lecturer_one.toString().split("_");
     				lecturerListFromID.add(new lecturer(details[0], details[1], Double.parseDouble(details[2]), Integer.parseInt(details[3]), details[4], details[5]));
     			}
@@ -365,16 +304,13 @@ public class university
     	return lecturerListFromID;
     }
 
-    public ArrayList<staff> fromID_PrintOutAllDetailsOfStaff(LinkedHashMap<String, Double> dmcuocdoi)
-    {
+    // 17.
+    public ArrayList<staff> getStaffFromID(LinkedHashMap<String, Double> employeeID) {
     	ArrayList<staff> staffListFromID = new ArrayList<staff>();
 
-    	for(String key : dmcuocdoi.keySet())
-    	{
-    		for(staff staff_one : getStaffList())
-    		{
-    			if(key.equals(staff_one.getID()))
-    			{	
+    	for(String key : employeeID.keySet()) {
+    		for(staff staff_one : getStaffList(this.employeeList)) {
+    			if(key.equals(staff_one.getEmployeeID())) {	
     				String[] details = staff_one.toString().split("_");
     				staffListFromID.add(new staff(details[0], details[1], Double.parseDouble(details[2]), Integer.parseInt(details[3]), details[4], details[5]));
     			}
@@ -384,21 +320,16 @@ public class university
     	return staffListFromID;
     }
 
-
-    // 14. Increase salaryCoefficient of all employee.
-    public ArrayList<employee> increaseSalaryCoefficientOfAllEmployee(double increasingRate)
-    {	
+    // 18. Increase salaryCoefficient of all employee.
+    public ArrayList<employee> increaseSalaryCoefficientOfAllEmployee(double increasingRate) {	
     	ArrayList<employee> newEmployeeList = new ArrayList<employee>();
 
-		for(employee employee_one  : this.employeeList)
-		{
-			if(employee_one.getID().startsWith("LT"))
-			{
+		for(employee employee_one  : this.employeeList) {
+			if(employee_one.getEmployeeID().startsWith("LT")) {
 				String[] details = employee_one.toString().split("_");
 				newEmployeeList.add(new lecturer(details[0], details[1], Double.parseDouble(details[2]) * (1 + increasingRate), Integer.parseInt(details[3]), details[4], details[5]));
 			}
-			else if(employee_one.getID().startsWith("ST"))
-			{
+			else if(employee_one.getEmployeeID().startsWith("ST")) {
 				String[] details = employee_one.toString().split("_");
 				newEmployeeList.add(new staff(details[0], details[1], Double.parseDouble(details[2]) * (1 + increasingRate), Integer.parseInt(details[3]), details[4], details[5]));
 			}
@@ -407,12 +338,99 @@ public class university
 		return newEmployeeList;
     }
 
-   	public void printOutEmployeeList() // Done
-   	{
+    // 19.
+    public ArrayList<employee> decreaseSalaryCoefficientOfAllEmployee(double decreasingRate) {	
+    	ArrayList<employee> newEmployeeList = new ArrayList<employee>();
+
+		for(employee employee_one  : this.employeeList) {
+			if(employee_one.getEmployeeID().startsWith("LT")) {
+				String[] details = employee_one.toString().split("_");
+				newEmployeeList.add(new lecturer(details[0], details[1], Double.parseDouble(details[2]) * (1 - decreasingRate), Integer.parseInt(details[3]), details[4], details[5]));
+			}
+			else if(employee_one.getEmployeeID().startsWith("ST")) {
+				String[] details = employee_one.toString().split("_");
+				newEmployeeList.add(new staff(details[0], details[1], Double.parseDouble(details[2]) * (1 - decreasingRate), Integer.parseInt(details[3]), details[4], details[5]));
+			}
+		}
+
+		return newEmployeeList;
+    }    
+
+    // 19. 
+    public LinkedHashMap<String, Double> getEmployeeID_LecturerHaveSalaryHigherThan(double lowerBound) {
+    	LinkedHashMap<String, Double> employeeID_SalaryOfLecturer = getEmployeeID_SalaryOfLecturer();
+    	LinkedHashMap<String, Double> lecturerHaveSalaryHigherThan = new LinkedHashMap<String, Double>();
+
+   		for(String key : employeeID_SalaryOfLecturer.keySet()) {
+   			if(lowerBound <= employeeID_SalaryOfLecturer.get(key)) {
+   				lecturerHaveSalaryHigherThan.put(key, employeeID_SalaryOfLecturer.get(key));
+   			}
+   		}
+
+  		return lecturerHaveSalaryHigherThan;
+    }
+
+    // 20. 
+    public LinkedHashMap<String, Double> getEmployeeID_StaffHaveSalaryHigherThan(double lowerBound) {
+    	LinkedHashMap<String, Double> employeeID_StaffOfStaff = getEmployeeID_SalaryOfStaff();
+    	LinkedHashMap<String, Double> employeeID_staffHaveSalaryHigherThan = new LinkedHashMap<String, Double>();
+
+   		for(String key : employeeID_StaffOfStaff.keySet()) {
+   			if(lowerBound <= employeeID_StaffOfStaff.get(key)) {
+   				employeeID_staffHaveSalaryHigherThan.put(key, employeeID_StaffOfStaff.get(key));
+   			}
+   		}
+
+  		return employeeID_staffHaveSalaryHigherThan;
+    }   
+
+    // 21. 
+    /*
+    public LinkedHashMap<String, Double> getLecturer_AscendingSalary() {
+    	LinkedHashMap<String, Double> employeeID_SalaryOfLecturer = getEmployeeID_SalaryOfLecturer();
+    	LinkedHashMap<String, Double> res = new LinkedHashMap<String, Double>();
+
+    	// List<Map.Entry<String, Double>> entryList = new ArrayList<>(employeeID_SalaryOfLecturer.entrySet());
+
+    	// Collections.sort(entryList, new Comparator<Map.Entry<String, Double>>() {
+    	// 	@Override
+    	// 	public double compare(Map.Entry<String, Double> o1, Map.Entry<String, Double> o2) {
+    	// 		return o1.getValue().compareTo(o2.getValue());
+    	// 	}
+    	// });
+
+    	// LinkedHashMap<String, Integer> result = new LinkedHashMap<>();
+     //    for (Map.Entry<String, Integer> e : entryList) {
+     //        result.put(e.getKey(), e.getValue());
+     //    }
+
+    	List<Map.Entry<String, Double>> list = new ArrayList<Map.Entry<String, Double>> (employeeID_SalaryOfLecturer.entrySet());
+
+    	Collections.sort(
+    		list, new Comparator<Map.Entry<String, Double>>() {
+    			public double compare(Entry<String, Double> entry1, Entry<String, Double> entry2) {
+    				return entry1.getValue() - entry2.getValue();
+    			}
+    		}
+    	);
+
+    	employeeID_SalaryOfLecturer.clear();
+
+    	for(Map.Entry<String, Double> entry : list) {
+    		res.put(entry.getKey(), entry.getValue());
+    	}
+    } 
+	*/
+
+
+
+
+
+
+   	public void printOutEmployeeList() {
    		int i = 1, j = 1;
-   		System.out.println("-------------List of lecturer-------------");
-   		for(lecturer lecturer_one : getLecturerList())
-   		{
+   		System.out.println("--------------------------List of lecturer--------------------------");
+   		for(lecturer lecturer_one : getLecturerList(this.employeeList)) {
    			String[] details = lecturer_one.toString().split("_");
    			System.out.println("Lecturer " + i);
    			System.out.println("Full Name: " + details[1]);
@@ -425,9 +443,8 @@ public class university
    			i++;	
    		}
 
-   		System.out.println("-------------List of staff-------------");
-   		for(staff staff_one : getStaffList())
-   		{
+   		System.out.println("--------------------------List of staff--------------------------");
+   		for(staff staff_one : getStaffList(this.employeeList)) {
    			String[] details = staff_one.toString().split("_");
    			System.out.println("Staff " + j);
    			System.out.println("Full Name: " + details[1]);
@@ -441,13 +458,10 @@ public class university
    		}
    	}
 
-   	public void printOutITLecturer() // Done
-   	{
+   	public void printOutLecturer() {
    		int i = 1;
-   		System.out.println("-------------List of IT lecturer-------------");
-
-   		for(lecturer lecturer_one : getLecturerOfITFaculty())
-   		{
+   		System.out.println("--------------------------List of lecturer--------------------------");
+   		for(lecturer lecturer_one : getLecturerList(this.employeeList)) {
    			String[] details = lecturer_one.toString().split("_");
    			System.out.println("Lecturer " + i);
    			System.out.println("Full Name: " + details[1]);
@@ -461,13 +475,46 @@ public class university
    		}
    	}
 
-   	public void printOutSalaryOFITLecturerKhai() // Done
-   	{
-   		int i = 1;
-   		System.out.println("-------------Salary of IT lecturer whose name is Khai-------------");
+   	public void printOutStaff() {
+   		int j = 1;
+   		System.out.println("--------------------------List of staff--------------------------");
+   		for(staff staff_one : getStaffList(this.employeeList)) {
+   			String[] details = staff_one.toString().split("_");
+   			System.out.println("Staff " + j);
+   			System.out.println("Full Name: " + details[1]);
+   			System.out.println("Salary Coefficient: " + decimalFormat.format(Double.parseDouble(details[2])));
+   			System.out.println("Working day: " + decimalFormat.format(Integer.parseInt(details[3])));
+   			System.out.println("Duty: " + details[4]);
+   			System.out.println("Department: " + details[5]);  		
+   			System.out.println("Allowance: " + decimalFormat.format(staff_one.getAllowance()));
+   			System.out.println("Salary: " + decimalFormat.format(staff_one.getSalary()) + "\n");
+   			j++;	
+   		}
+   	}
 
-   		for(lecturer lecturer_one : getSpecificLecturerOFITFaculty("Khai"))
-   		{
+   	public void printOutITLecturer() {
+   		int i = 1;
+   		System.out.println("--------------------------List of IT lecturer--------------------------");
+
+   		for(lecturer lecturer_one : getLecturerOfITFaculty()) {
+   			String[] details = lecturer_one.toString().split("_");
+   			System.out.println("Lecturer " + i);
+   			System.out.println("Full Name: " + details[1]);
+   			System.out.println("Salary Coefficient: " + decimalFormat.format(Double.parseDouble(details[2])));
+   			System.out.println("Working day: " + decimalFormat.format(Integer.parseInt(details[3])));
+   			System.out.println("Degree: " + details[4]);
+   			System.out.println("Faculty: " + details[5]);  		
+   			System.out.println("Allowance: " + decimalFormat.format(lecturer_one.getAllowance()));
+   			System.out.println("Salary: " + decimalFormat.format(lecturer_one.getSalary()) + "\n");
+   			i++;	
+   		}
+   	}
+
+   	public void printOutSalaryOFITLecturerKhai() {
+   		int i = 1;
+   		System.out.println("--------------------------Salary of IT lecturer whose name is Khai--------------------------");
+
+   		for(lecturer lecturer_one : getSpecificLecturerOFITFaculty_ByName("Khai")) {
    			String[] details = lecturer_one.toString().split("_");
    			System.out.println("Lecturer " + i);
    			System.out.println("Full Name: " + details[1]);
@@ -481,27 +528,25 @@ public class university
    		}   		
    	}
 
-   	public void printOutTheEmployeeWhoseHasTheHighestSalary() // Done
-   	{
+   	public void printOutEmployeeWhoseHasTheHighestSalary() {
     	int i = 1, j = 1;
-   		System.out.println("-------------List of lecturer who has the highest salary-------------");
-   		for(lecturer lecturer_one : fromID_PrintOutAllDetailsOfLecturer(getLecturerHighestSalary()))
+   		System.out.println("--------------------------List of lecturer who has the highest salary--------------------------");
+   		for(lecturer lecturer_one : getLecturerFromID(getEmployeeID_HighestSalaryOfLecturer()))
    		{
    			String[] details = lecturer_one.toString().split("_");
    			System.out.println("Lecturer " + i);
    			System.out.println("Full Name: " + details[1]);
-   			System.out.println("Salary Coefficient: " + decimalFormat.format(Double.parseDouble(details[2])));
-   			System.out.println("Working day: " + decimalFormat.format(Integer.parseInt(details[3])));
-   			System.out.println("Degree: " + details[4]);
-   			System.out.println("Faculty: " + details[5]);  		
-   			System.out.println("Allowance: " + decimalFormat.format(lecturer_one.getAllowance()));
+   			// System.out.println("Salary Coefficient: " + decimalFormat.format(Double.parseDouble(details[2])));
+   			// System.out.println("Working day: " + decimalFormat.format(Integer.parseInt(details[3])));
+   			// System.out.println("Degree: " + details[4]);
+   			// System.out.println("Faculty: " + details[5]);  		
+   			// System.out.println("Allowance: " + decimalFormat.format(lecturer_one.getAllowance()));
    			System.out.println("Salary: " + decimalFormat.format(lecturer_one.getSalary()) + "\n");
    			i++;	
    		}
 
-   		System.out.println("-------------List of staff who has the highest salary-------------");
-   		for(staff staff_one : fromID_PrintOutAllDetailsOfStaff(getStaffHighestSalary()))
-   		{
+   		System.out.println("--------------------------List of staff who has the highest salary--------------------------");
+   		for(staff staff_one : getStaffFromID(getEmployeeID_HighestSalaryOfStaff())) {
    			String[] details = staff_one.toString().split("_");
    			System.out.println("Staff " + j);
    			System.out.println("Full Name: " + details[1]);
@@ -515,35 +560,141 @@ public class university
    		}  		
    	}
 
-   	public void printOutSalaryOfEmployeeAfterIncreaseSalaryCoefficient()
-   	{
-   		ArrayList<employee> newEmployeeList = increaseSalaryCoefficientOfAllEmployee(0.1);
+   	public void printOutSalaryOfEmployeeAfterIncreaseSalaryCoefficient(double increasingRate) {
+   		ArrayList<lecturer> newLecturerList = getLecturerList(increaseSalaryCoefficientOfAllEmployee(increasingRate));
+   		ArrayList<staff> newStaffList = getStaffList(increaseSalaryCoefficientOfAllEmployee(increasingRate));
 
-			
+    	int i = 1, j = 1;
+   		System.out.println("--------------------------List of lecturer after increasing salary coefficient--------------------------");
+   		for(lecturer lecturer_one : newLecturerList) {
+   			String[] details = lecturer_one.toString().split("_");
+   			System.out.println("Lecturer " + i);
+   			System.out.println("Full Name: " + details[1]);
+   			// System.out.println("Salary Coefficient: " + decimalFormat.format(Double.parseDouble(details[2])));
+   			// System.out.println("Working day: " + decimalFormat.format(Integer.parseInt(details[3])));
+   			// System.out.println("Degree: " + details[4]);
+   			// System.out.println("Faculty: " + details[5]);  		
+   			// System.out.println("Allowance: " + decimalFormat.format(lecturer_one.getAllowance()));
+   			System.out.println("Salary: " + decimalFormat.format(lecturer_one.getSalary()) + "\n");
+   			i++;	
+   		}
+   		System.out.println("--------------------------List of staff after increasing salary coefficient--------------------------");
+   		for(staff staff_one : newStaffList) {
+   			String[] details = staff_one.toString().split("_");
+   			System.out.println("Staff " + j);
+   			System.out.println("Full Name: " + details[1]);
+   			// System.out.println("Salary Coefficient: " + decimalFormat.format(Double.parseDouble(details[2])));
+   			// System.out.println("Working day: " + decimalFormat.format(Integer.parseInt(details[3])));
+   			// System.out.println("Duty: " + details[4]);
+   			// System.out.println("Department: " + details[5]);  		
+   			// System.out.println("Allowance: " + decimalFormat.format(lecturer_one.getAllowance()));
+   			System.out.println("Salary: " + decimalFormat.format(staff_one.getSalary()) + "\n");
+   			j++;	
+   		}
+   	}
+
+	public void printOutSalaryOfEmployeeAfterDecreaseSalaryCoefficient(double decreasingRate) {
+   		ArrayList<lecturer> newLecturerList = getLecturerList(increaseSalaryCoefficientOfAllEmployee(decreasingRate));
+   		ArrayList<staff> newStaffList = getStaffList(increaseSalaryCoefficientOfAllEmployee(decreasingRate));
+
+    	int i = 1, j = 1;
+   		System.out.println("--------------------------List of lecturer after decreasing salary coefficient--------------------------");
+   		for(lecturer lecturer_one : newLecturerList) {
+   			String[] details = lecturer_one.toString().split("_");
+   			System.out.println("Lecturer " + i);
+   			System.out.println("Full Name: " + details[1]);
+   			// System.out.println("Salary Coefficient: " + decimalFormat.format(Double.parseDouble(details[2])));
+   			// System.out.println("Working day: " + decimalFormat.format(Integer.parseInt(details[3])));
+   			// System.out.println("Degree: " + details[4]);
+   			// System.out.println("Faculty: " + details[5]);  		
+   			// System.out.println("Allowance: " + decimalFormat.format(lecturer_one.getAllowance()));
+   			System.out.println("Salary: " + decimalFormat.format(lecturer_one.getSalary()) + "\n");
+   			i++;	
+   		}
+   		System.out.println("--------------------------List of staff after decreasing salary coefficient--------------------------");
+   		for(staff staff_one : newStaffList) {
+   			String[] details = staff_one.toString().split("_");
+   			System.out.println("Staff " + j);
+   			System.out.println("Full Name: " + details[1]);
+   			// System.out.println("Salary Coefficient: " + decimalFormat.format(Double.parseDouble(details[2])));
+   			// System.out.println("Working day: " + decimalFormat.format(Integer.parseInt(details[3])));
+   			// System.out.println("Duty: " + details[4]);
+   			// System.out.println("Department: " + details[5]);  		
+   			// System.out.println("Allowance: " + decimalFormat.format(lecturer_one.getAllowance()));
+   			System.out.println("Salary: " + decimalFormat.format(staff_one.getSalary()) + "\n");
+   			j++;	
+   		}   					
+   	}
+
+   	public void printOutTotalSalaryOfEmployee() {
+   		double totalSalary = 0;
+
+   		for(lecturer lecturer_one : getLecturerList(this.employeeList)) {
+   			totalSalary += lecturer_one.getSalary();
+   		}
+
+   		for(staff staff_one : getStaffList(this.employeeList)) {
+   			totalSalary += staff_one.getSalary();
+   		}
+   		
+   		System.out.println("Total of Salary university have to pay for its employee: " + decimalFormat.format(totalSalary) + "\n");
+   	}
+
+
+   	public void printOutEmployeeHaveSalaryHigherThan(double lowerBound) {
+
+   		ArrayList<staff> employeeID_StaffHaveSalaryHigherThan = getStaffFromID(getEmployeeID_StaffHaveSalaryHigherThan(lowerBound));
+   		ArrayList<lecturer> employeeID_LecturerHaveSalaryHigherThan = getLecturerFromID(getEmployeeID_LecturerHaveSalaryHigherThan(lowerBound));   	
+
+    	int i = 1, j = 1;
+   		System.out.printf("--------------------------List of lecturer have salary higher than "  + decimalFormat.format(lowerBound) + "--------------------------\n");
+   		for(lecturer lecturer_one : employeeID_LecturerHaveSalaryHigherThan) {
+   			String[] details = lecturer_one.toString().split("_");
+   			System.out.println("Lecturer " + i);
+   			System.out.println("Full Name: " + details[1]);
+   			// System.out.println("Salary Coefficient: " + decimalFormat.format(Double.parseDouble(details[2])));
+   			// System.out.println("Working day: " + decimalFormat.format(Integer.parseInt(details[3])));
+   			// System.out.println("Degree: " + details[4]);
+   			// System.out.println("Faculty: " + details[5]);  		
+   			// System.out.println("Allowance: " + decimalFormat.format(lecturer_one.getAllowance()));
+   			System.out.println("Salary: " + decimalFormat.format(lecturer_one.getSalary()) + "\n");
+   			i++;	
+   		}
+
+   		System.out.printf("--------------------------List of staff have salary higher than "  + decimalFormat.format(lowerBound) + "--------------------------\n");
+   		for(staff staff_one : employeeID_StaffHaveSalaryHigherThan) {
+   			String[] details = staff_one.toString().split("_");
+   			System.out.println("Staff " + j);
+   			System.out.println("Full Name: " + details[1]);
+   			// System.out.println("Salary Coefficient: " + decimalFormat.format(Double.parseDouble(details[2])));
+   			// System.out.println("Working day: " + decimalFormat.format(Integer.parseInt(details[3])));
+   			// System.out.println("Duty: " + details[4]);
+   			// System.out.println("Department: " + details[5]);  		
+   			// System.out.println("Allowance: " + decimalFormat.format(lecturer_one.getAllowance()));
+   			System.out.println("Salary: " + decimalFormat.format(staff_one.getSalary()) + "\n");
+   			j++;	
+   		}
    	}
 
 
 
-	public static ArrayList<String> loadFile(String filePath)
-	{
+
+
+	public static ArrayList<String> loadFile(String filePath) {
 		String data = "";
 		ArrayList<String> list = new ArrayList<String>();
 
-		try 
-		{
+		try {
 			FileReader reader = new FileReader(filePath);
 			BufferedReader fReader = new BufferedReader(reader);
 
-			while((data = fReader.readLine()) != null)
-			{
+			while((data = fReader.readLine()) != null) {
 				list.add(data);	
 			}	
 
 			fReader.close();
 			reader.close();
-		}
-		catch(Exception e)
-		{
+		} catch(Exception e) {
 			System.out.println("ERROR CANNOT LOAD FILE");
 		}
 
@@ -551,5 +702,6 @@ public class university
 	}
 
 }
+
 
 
