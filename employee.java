@@ -1,3 +1,4 @@
+
 public abstract class employee
 {
 	// Attributes
@@ -18,7 +19,7 @@ public abstract class employee
 	}
 
 	// Getter
-	public String getID()
+	public String getEmployeeID()
 	{
 		return this.employeeID;
 	}
@@ -45,7 +46,7 @@ public abstract class employee
 		this.fullName = newName;
 	}
 
-	public void setID(String newID)
+	public void setEmployeeID(String newID)
 	{
 		this.employeeID = newID;
 	}
