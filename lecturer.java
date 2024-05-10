@@ -4,8 +4,9 @@ public class lecturer extends employee
 	private String faculty;
 	private String degree;
 
+
 	// Constructor
-	public lecturer(String employeeID, String fullName, double salaryCoefficient, String faculty, String degree, int workingDay)
+	public lecturer(String employeeID, String fullName, double salaryCoefficient, int workingDay, String faculty, String degree)
 	{
 		super(employeeID, fullName, salaryCoefficient, workingDay);
 		this.faculty = faculty;
@@ -38,13 +39,13 @@ public class lecturer extends employee
 	@Override
 	public double getSalary()
 	{
-		return super.salaryCoefficient*830 + getAllowance() + workingDay*30;
+		return super.salaryCoefficient*830000 + getAllowance() + workingDay*30;
 	}
 
 	@Override
-	public String toString()
+	public String toString() // this.employeeID + "_" + this.fullName + "_" + this.salaryCoefficient + "_" + this.workingDay + "_" + this.faculty + "_" + this.degree;
 	{
-		return super.toString() + "_" + getAllowance() + "_" + this.faculty + "_" + this.degree;
+		return super.toString() + "_" + this.faculty + "_" + this.degree + "_" + getAllowance();
 	}
 
 
@@ -53,11 +54,11 @@ public class lecturer extends employee
 	{
 		int allowance = 0;
 		if(this.degree.equals("Bachelor"))
-			allowance = 300;
+			allowance = 300000;
 		else if(this.degree.equals("Master"))
-			allowance = 500;
+			allowance = 500000;
 		else if(this.degree.equals("Doctor"))
-			allowance = 1000;
+			allowance = 1000000;
 
 		return allowance;
 	}
