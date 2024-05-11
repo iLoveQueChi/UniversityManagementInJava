@@ -78,7 +78,7 @@ class university{
     +getLecturerList() lecturer
     +getStaffList() staff
     +getITLecturerList() lecturer
-    +getSpecificLecturerOFITFaculty_ByName(String name) lecturer
+    +getSpecificLecturerOFITFacultyList_ByName(String name) lecturer
     +getEmployeeID_WorkingDayOfLecturer() LinkedHashMap<String, Integer>
     +getEmployeeID_WorkingDayOfStaff() LinkedHashMap<String, Integer>
     +getEmployeeID_WorkingDayOfHardestStaff() LinkedHashMap<String, Integer>
@@ -87,8 +87,8 @@ class university{
     +getEmployeeID_SalaryOfStaff() LinkedHashMap<String, Double>
     +getEmployeeID_HighestSalaryOfLecturer() LinkedHashMap<String, Double>
     +getEmployeeID_HighestSalaryOfStaff() LinkedHashMap<String, Double>
-    +getLecturerFromID() ArrayList<lecturer>
-    +getStaffFromID() ArrayList<staff>   
+    +getLecturerList_ByID() ArrayList<lecturer>
+    +getStaffList_ByID() ArrayList<staff>   
     +increaseSalaryCoefficientOfAllEmployee(double increasingRate) ArrayList<employee>
     +decreaseSalaryCoefficientOfAllEmployee(double decreasingRate) ArrayList<employee>
     +getEmployeeID_LecturerHaveSalaryHigherThan(double lowerBound) LinkedHashMap<String, Double>
