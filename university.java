@@ -1,38 +1,3 @@
-/*
- .----------------.  .----------------.  .----------------.  .-----------------. .----------------.   .----------------.  .----------------.  .----------------.                                                             
-| .--------------. || .--------------. || .--------------. || .--------------. || .--------------. | | .--------------. || .--------------. || .--------------. |                                                            
-| |    ___       | || | _____  _____ | || |      __      | || | ____  _____  | || |    ______    | | | |  ____  ____  | || | _____  _____ | || |  ____  ____  | |                                                            
-| |  .'   '.     | || ||_   _||_   _|| || |     /  \     | || ||_   \|_   _| | || |  .' ___  |   | | | | |_   ||   _| | || ||_   _||_   _|| || | |_  _||_  _| | |                                                            
-| | /  .-.  \    | || |  | |    | |  | || |    / /\ \    | || |  |   \ | |   | || | / .'   \_|   | | | |   | |__| |   | || |  | |    | |  | || |   \ \  / /   | |                                                            
-| | | |   | |    | || |  | '    ' |  | || |   / ____ \   | || |  | |\ \| |   | || | | |    ____  | | | |   |  __  |   | || |  | '    ' |  | || |    \ \/ /    | |                                                            
-| | \  `-'  \_   | || |   \ `--' /   | || | _/ /    \ \_ | || | _| |_\   |_  | || | \ `.___]  _| | | | |  _| |  | |_  | || |   \ `--' /   | || |    _|  |_    | |                                                            
-| |  `.___.\__|  | || |    `.__.'    | || ||____|  |____|| || ||_____|\____| | || |  `._____.'   | | | | |____||____| | || |    `.__.'    | || |   |______|   | |                                                            
-| |              | || |              | || |              | || |              | || |              | | | |              | || |              | || |              | |                                                            
-| '--------------' || '--------------' || '--------------' || '--------------' || '--------------' | | '--------------' || '--------------' || '--------------' |                                                            
- '----------------'  '----------------'  '----------------'  '----------------'  '----------------'   '----------------'  '----------------'  '----------------'                                                             
- .----------------.  .-----------------. .----------------.                                                                                                                                                                  
-| .--------------. || .--------------. || .--------------. |                                                                                                                                                                 
-| |      __      | || | ____  _____  | || |  ________    | |                                                                                                                                                                 
-| |     /  \     | || ||_   \|_   _| | || | |_   ___ `.  | |                                                                                                                                                                 
-| |    / /\ \    | || |  |   \ | |   | || |   | |   `. \ | |                                                                                                                                                                 
-| |   / ____ \   | || |  | |\ \| |   | || |   | |    | | | |                                                                                                                                                                 
-| | _/ /    \ \_ | || | _| |_\   |_  | || |  _| |___.' / | |                                                                                                                                                                 
-| ||____|  |____|| || ||_____|\____| | || | |________.'  | |                                                                                                                                                                 
-| |              | || |              | || |              | |                                                                                                                                                                 
-| '--------------' || '--------------' || '--------------' |                                                                                                                                                                 
- '----------------'  '----------------'  '----------------'                                                                                                                                                                  
- .----------------.  .----------------.  .----------------.  .-----------------. .----------------.   .----------------.  .----------------.  .----------------.  .----------------.  .-----------------. .----------------. 
-| .--------------. || .--------------. || .--------------. || .--------------. || .--------------. | | .--------------. || .--------------. || .--------------. || .--------------. || .--------------. || .--------------. |
-| |    ___       | || | _____  _____ | || |      __      | || | ____  _____  | || |    ______    | | | |  _________   | || |  _______     | || | _____  _____ | || |     ____     | || | ____  _____  | || |    ______    | |
-| |  .'   '.     | || ||_   _||_   _|| || |     /  \     | || ||_   \|_   _| | || |  .' ___  |   | | | | |  _   _  |  | || | |_   __ \    | || ||_   _||_   _|| || |   .'    `.   | || ||_   \|_   _| | || |  .' ___  |   | |
-| | /  .-.  \    | || |  | |    | |  | || |    / /\ \    | || |  |   \ | |   | || | / .'   \_|   | | | | |_/ | | \_|  | || |   | |__) |   | || |  | |    | |  | || |  /  .--.  \  | || |  |   \ | |   | || | / .'   \_|   | |
-| | | |   | |    | || |  | '    ' |  | || |   / ____ \   | || |  | |\ \| |   | || | | |    ____  | | | |     | |      | || |   |  __ /    | || |  | '    ' |  | || |  | |    | |  | || |  | |\ \| |   | || | | |    ____  | |
-| | \  `-'  \_   | || |   \ `--' /   | || | _/ /    \ \_ | || | _| |_\   |_  | || | \ `.___]  _| | | | |    _| |_     | || |  _| |  \ \_  | || |   \ `--' /   | || |  \  `--'  /  | || | _| |_\   |_  | || | \ `.___]  _| | |
-| |  `.___.\__|  | || |    `.__.'    | || ||____|  |____|| || ||_____|\____| | || |  `._____.'   | | | |   |_____|    | || | |____| |___| | || |    `.__.'    | || |   `.____.'   | || ||_____|\____| | || |  `._____.'   | |
-| |              | || |              | || |              | || |              | || |              | | | |              | || |              | || |              | || |              | || |              | || |              | |
-| '--------------' || '--------------' || '--------------' || '--------------' || '--------------' | | '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' |
- '----------------'  '----------------'  '----------------'  '----------------'  '----------------'   '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------' 
-*/
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -40,11 +5,6 @@ import java.util.List;
 import java.util.*;
 import java.io.*;
 
-
-import java.util.Collections; 
-import java.util.Comparator; 
-import java.util.LinkedHashMap; 
-import java.util.Map.*; 
 
 
 public class university {
@@ -73,16 +33,12 @@ public class university {
 
 
 	/*----------------------------------------------------------------------Getters------------------------------------------------------------------------*/
-	public ArrayList<employee> getEmployeeList() {
-		return this.employeeList;
-	}
+	public ArrayList<employee> getEmployeeList() {return this.employeeList;}
 	/*----------------------------------------------------------------------Getters------------------------------------------------------------------------*/
 
 
 	/*----------------------------------------------------------------------Setters------------------------------------------------------------------------*/
-	public void setEmployeeList(ArrayList<employee> newEmployeeList) {
-		this.employeeList = newEmployeeList;
-	}
+	public void setEmployeeList(ArrayList<employee> newEmployeeList) {this.employeeList = newEmployeeList;}
 	/*----------------------------------------------------------------------Setters------------------------------------------------------------------------*/
 
 
@@ -101,7 +57,6 @@ public class university {
 			else if(details[0].startsWith("ST")) 
 				employeeList.add(new staff(details[0], details[1], Double.parseDouble(details[2]), Integer.parseInt(details[3]), details[4], details[5]));
 		}
-
 		return employeeList;
 	}
 
@@ -115,7 +70,6 @@ public class university {
 				lecturerList.add(new lecturer(details[0], details[1], Double.parseDouble(details[2]), Integer.parseInt(details[3]), details[4], details[5]));
 			}
 		}
-
 		return lecturerList;
 	}
 
@@ -123,38 +77,32 @@ public class university {
 	public ArrayList<staff> getStaffList(ArrayList<employee> employeeList) {
 		ArrayList<staff> staffList = new ArrayList<staff>();
 
-		for(employee employee_one  : employeeList)
-		{
-			if(employee_one.getEmployeeID().startsWith("ST"))
-			{
+		for(employee employee_one  : employeeList) {
+			if(employee_one.getEmployeeID().startsWith("ST")) {
 				String[] details = employee_one.toString().split("_");
 				staffList.add(new staff(details[0], details[1], Double.parseDouble(details[2]), Integer.parseInt(details[3]), details[4], details[5]));
 			}
 		}
-
 		return staffList;
 	}
 
 	// 4. Get ITlecturerList from employeeList
-	public ArrayList<lecturer> getLecturerOfITFaculty() {
+	public ArrayList<lecturer> getLecturerOfITFacultyList() {
 		ArrayList<lecturer> lecturerList = getLecturerList(this.employeeList);
 		ArrayList<lecturer> lecturerOfITFacultyList = new ArrayList<lecturer>();
 
-		for(lecturer lecturer_one : lecturerList)
-		{
-			if(lecturer_one.getFaculty().equals("IT")) // String: employeeID, String: fullName, Double: salaryCoefficient, Integer: workingDay, String: faculty, String: degree
-			{
+		for(lecturer lecturer_one : lecturerList) {
+			if(lecturer_one.getFaculty().equals("IT")) {
 				String[] details = lecturer_one.toString().split("_");
 				lecturerOfITFacultyList.add(new lecturer(details[0], details[1], Double.parseDouble(details[2]), Integer.parseInt(details[3]), details[4], details[5]));
 			}
 		}
-
 		return lecturerOfITFacultyList;
 	}
 
-	// 7. Get specific lecturer by their name from ITLecturerList 
-	public ArrayList<lecturer> getSpecificLecturerOFITFaculty_ByName(String name) {
-		ArrayList<lecturer> lecturerOfITFacultyList = getLecturerOfITFaculty();
+	// 5. Get specific lecturer by their name from ITLecturerList 
+	public ArrayList<lecturer> getSpecificLecturerOFITFacultyList_ByName(String name) {
+		ArrayList<lecturer> lecturerOfITFacultyList = getLecturerOfITFacultyList();
 		ArrayList<lecturer> specificLecturerOfITFacultyList = new ArrayList<lecturer>();
 
 		for(lecturer lecturer_one : lecturerOfITFacultyList) {
@@ -163,11 +111,10 @@ public class university {
 				specificLecturerOfITFacultyList.add(new lecturer(details[0], details[1], Double.parseDouble(details[2]), Integer.parseInt(details[3]), details[4], details[5]));
 			}
 		}
-
 		return specificLecturerOfITFacultyList;
 	}
 
-	// 8. Get employeeID and workingDay of lecturer
+	// 6. Get employeeID and workingDay of lecturer
     public LinkedHashMap<String, Integer> getEmployeeID_WorkingDayOfLecturer() {
     	ArrayList<lecturer> lecturerList = getLecturerList(this.employeeList);
         LinkedHashMap<String, Integer> employeeID_WorkingDayOfLecturer = new LinkedHashMap<String, Integer>();
@@ -180,7 +127,7 @@ public class university {
         return employeeID_WorkingDayOfLecturer;
     }
 
-    // 9. Get employeeID and workingDay of staff
+    // 7. Get employeeID and workingDay of staff
     public LinkedHashMap<String, Integer> getEmployeeID_WorkingDayOfStaff() {
 		ArrayList<staff> staffList = getStaffList(this.employeeList);    	
         LinkedHashMap<String, Integer> employeeID_WorkingDayOfStaff = new LinkedHashMap<String, Integer>();
@@ -188,12 +135,11 @@ public class university {
         for(staff staff_one : staffList) {
             String[] details = staff_one.toString().split("_");
             employeeID_WorkingDayOfStaff.put(details[0], Integer.parseInt(details[3]));         	
-        }
-        
+        }   
         return employeeID_WorkingDayOfStaff;
     }
 
-    // 10. Get the staff who work hardest
+    // 8. Get the staff who work hardest
     public LinkedHashMap<String, Integer> getEmployeeID_WorkingDayOfHardestStaff() {
     	LinkedHashMap<String, Integer> employeeID_WorkingDayOfStaff = getEmployeeID_WorkingDayOfStaff(); 
 		LinkedHashMap<String, Integer> employeeID_WorkingDayOfHardestStaff = new LinkedHashMap<String, Integer>();
@@ -210,10 +156,9 @@ public class university {
    		return employeeID_WorkingDayOfHardestStaff;
     }
 
-    // 11. Get the lecturer who work hardest
+    // 9. Get the lecturer who work hardest
     public LinkedHashMap<String, Integer> getEmployeeID_WorkingDayOfHardestLecturer() {
     	LinkedHashMap<String, Integer> employeeID_WorkingDayOfLecturer = getEmployeeID_WorkingDayOfLecturer(); 
-
 		LinkedHashMap<String, Integer> employeeID_WorkingDayOfHardestLecturer = new LinkedHashMap<String, Integer>();
 
    		String key_max = "";
@@ -228,7 +173,7 @@ public class university {
    		return employeeID_WorkingDayOfHardestLecturer;
     }
 	  
-    // 12. Get employeeID and salary of lecturer
+    // 10. Get employeeID and salary of lecturer
     public LinkedHashMap<String, Double> getEmployeeID_SalaryOfLecturer() {
 		ArrayList<lecturer> lecturerList = getLecturerList(this.employeeList);
    		LinkedHashMap<String, Double> employeeID_SalaryOfLecturer = new LinkedHashMap<String, Double>();
@@ -240,7 +185,7 @@ public class university {
    		return employeeID_SalaryOfLecturer;
     }
 
-    // 13. Get employeeID and salary of staff
+    // 11. Get employeeID and salary of staff
     public LinkedHashMap<String, Double> getEmployeeID_SalaryOfStaff() {
 		ArrayList<staff> staffList = getStaffList(this.employeeList);    	
    		LinkedHashMap<String, Double> employeeID_SalaryOfStaff = new LinkedHashMap<String, Double>();
@@ -252,10 +197,9 @@ public class university {
    		return employeeID_SalaryOfStaff;
     }
 
-   	// 14. Get the lecturer who has the highest salary
+   	// 12. Get the lecturer who has the highest salary
     public LinkedHashMap<String, Double> getEmployeeID_HighestSalaryOfLecturer() {
     	LinkedHashMap<String, Double> employeeID_SalaryOfLecturer = getEmployeeID_SalaryOfLecturer(); 
-
 		LinkedHashMap<String, Double> employeeID_HighestSalaryOfLecturer = new LinkedHashMap<String, Double>();
 
    		String key_max = "";
@@ -270,10 +214,9 @@ public class university {
    		return employeeID_HighestSalaryOfLecturer;
     }
 
-   	// 15. Get the staff who has the highest salary
+   	// 13. Get the staff who has the highest salary
     public LinkedHashMap<String, Double> getEmployeeID_HighestSalaryOfStaff() {
     	LinkedHashMap<String, Double> employeeID_SalaryOfStaff = getEmployeeID_SalaryOfStaff(); 
-
 		LinkedHashMap<String, Double> employeeID_HighestSalaryOfStaff = new LinkedHashMap<String, Double>();
 
    		String key_max = "";
@@ -288,8 +231,8 @@ public class university {
    		return employeeID_HighestSalaryOfStaff;
     }
  
- 	// 16.
-    public ArrayList<lecturer> getLecturerFromID(LinkedHashMap<String, Double> employeeID) {
+ 	// 14.
+    public ArrayList<lecturer> getLecturerList_ByID(LinkedHashMap<String, Double> employeeID) {
     	ArrayList<lecturer> lecturerListFromID = new ArrayList<lecturer>();
 
     	for(String key : employeeID.keySet()) {
@@ -304,8 +247,8 @@ public class university {
     	return lecturerListFromID;
     }
 
-    // 17.
-    public ArrayList<staff> getStaffFromID(LinkedHashMap<String, Double> employeeID) {
+    // 15.
+    public ArrayList<staff> getStaffList_ByID(LinkedHashMap<String, Double> employeeID) {
     	ArrayList<staff> staffListFromID = new ArrayList<staff>();
 
     	for(String key : employeeID.keySet()) {
@@ -320,7 +263,7 @@ public class university {
     	return staffListFromID;
     }
 
-    // 18. Increase salaryCoefficient of all employee.
+    // 16. Increase salaryCoefficient of all employee.
     public ArrayList<employee> increaseSalaryCoefficientOfAllEmployee(double increasingRate) {	
     	ArrayList<employee> newEmployeeList = new ArrayList<employee>();
 
@@ -338,7 +281,7 @@ public class university {
 		return newEmployeeList;
     }
 
-    // 19.
+    // 17.
     public ArrayList<employee> decreaseSalaryCoefficientOfAllEmployee(double decreasingRate) {	
     	ArrayList<employee> newEmployeeList = new ArrayList<employee>();
 
@@ -356,7 +299,7 @@ public class university {
 		return newEmployeeList;
     }    
 
-    // 19. 
+    // 18. 
     public LinkedHashMap<String, Double> getEmployeeID_LecturerHaveSalaryHigherThan(double lowerBound) {
     	LinkedHashMap<String, Double> employeeID_SalaryOfLecturer = getEmployeeID_SalaryOfLecturer();
     	LinkedHashMap<String, Double> lecturerHaveSalaryHigherThan = new LinkedHashMap<String, Double>();
@@ -370,7 +313,7 @@ public class university {
   		return lecturerHaveSalaryHigherThan;
     }
 
-    // 20. 
+    // 19. 
     public LinkedHashMap<String, Double> getEmployeeID_StaffHaveSalaryHigherThan(double lowerBound) {
     	LinkedHashMap<String, Double> employeeID_StaffOfStaff = getEmployeeID_SalaryOfStaff();
     	LinkedHashMap<String, Double> employeeID_staffHaveSalaryHigherThan = new LinkedHashMap<String, Double>();
@@ -384,7 +327,7 @@ public class university {
   		return employeeID_staffHaveSalaryHigherThan;
     }   
 
-    // 21. 
+    // 20. 
     /*
     public LinkedHashMap<String, Double> getLecturer_AscendingSalary() {
     	LinkedHashMap<String, Double> employeeID_SalaryOfLecturer = getEmployeeID_SalaryOfLecturer();
@@ -421,8 +364,6 @@ public class university {
     	}
     } 
 	*/
-
-
 
 
 
@@ -496,7 +437,7 @@ public class university {
    		int i = 1;
    		System.out.println("--------------------------List of IT lecturer--------------------------");
 
-   		for(lecturer lecturer_one : getLecturerOfITFaculty()) {
+   		for(lecturer lecturer_one : getLecturerOfITFacultyList()) {
    			String[] details = lecturer_one.toString().split("_");
    			System.out.println("Lecturer " + i);
    			System.out.println("Full Name: " + details[1]);
@@ -510,11 +451,11 @@ public class university {
    		}
    	}
 
-   	public void printOutSalaryOFITLecturerKhai() {
+   	public void printOutSalaryOFITLecturerList_ByName(String name) {
    		int i = 1;
    		System.out.println("--------------------------Salary of IT lecturer whose name is Khai--------------------------");
 
-   		for(lecturer lecturer_one : getSpecificLecturerOFITFaculty_ByName("Khai")) {
+   		for(lecturer lecturer_one : getSpecificLecturerOFITFacultyList_ByName(name)) {
    			String[] details = lecturer_one.toString().split("_");
    			System.out.println("Lecturer " + i);
    			System.out.println("Full Name: " + details[1]);
@@ -531,7 +472,7 @@ public class university {
    	public void printOutEmployeeWhoseHasTheHighestSalary() {
     	int i = 1, j = 1;
    		System.out.println("--------------------------List of lecturer who has the highest salary--------------------------");
-   		for(lecturer lecturer_one : getLecturerFromID(getEmployeeID_HighestSalaryOfLecturer()))
+   		for(lecturer lecturer_one : getLecturerList_ByID(getEmployeeID_HighestSalaryOfLecturer()))
    		{
    			String[] details = lecturer_one.toString().split("_");
    			System.out.println("Lecturer " + i);
@@ -546,7 +487,7 @@ public class university {
    		}
 
    		System.out.println("--------------------------List of staff who has the highest salary--------------------------");
-   		for(staff staff_one : getStaffFromID(getEmployeeID_HighestSalaryOfStaff())) {
+   		for(staff staff_one : getStaffList_ByID(getEmployeeID_HighestSalaryOfStaff())) {
    			String[] details = staff_one.toString().split("_");
    			System.out.println("Staff " + j);
    			System.out.println("Full Name: " + details[1]);
@@ -640,11 +581,10 @@ public class university {
    		System.out.println("Total of Salary university have to pay for its employee: " + decimalFormat.format(totalSalary) + "\n");
    	}
 
-
    	public void printOutEmployeeHaveSalaryHigherThan(double lowerBound) {
 
-   		ArrayList<staff> employeeID_StaffHaveSalaryHigherThan = getStaffFromID(getEmployeeID_StaffHaveSalaryHigherThan(lowerBound));
-   		ArrayList<lecturer> employeeID_LecturerHaveSalaryHigherThan = getLecturerFromID(getEmployeeID_LecturerHaveSalaryHigherThan(lowerBound));   	
+   		ArrayList<staff> employeeID_StaffHaveSalaryHigherThan = getStaffList_ByID(getEmployeeID_StaffHaveSalaryHigherThan(lowerBound));
+   		ArrayList<lecturer> employeeID_LecturerHaveSalaryHigherThan = getLecturerList_ByID(getEmployeeID_LecturerHaveSalaryHigherThan(lowerBound));   	
 
     	int i = 1, j = 1;
    		System.out.printf("--------------------------List of lecturer have salary higher than "  + decimalFormat.format(lowerBound) + "--------------------------\n");
@@ -676,20 +616,35 @@ public class university {
    		}
    	}
 
+   	public void printOutNumberOfLecturer() {
+   		int numberOfLecturer = 0;
+   		for(lecturer lecturer_one : getLecturerList(this.employeeList)) {
+   			numberOfLecturer++;
+   		}
+   		System.out.println("Number of lecturer: " + numberOfLecturer);
+   	}
+
+   	public void printOutNumberOfStaff() {
+   		int numberOfStaff = 0;
+   		for(staff staff_one : getStaffList(this.employeeList)) {
+   			numberOfStaff++;
+   		}
+   		System.out.println("Number of staff: " + numberOfStaff);
+   	}
 
 
 
 
 	public static ArrayList<String> loadFile(String filePath) {
-		String data = "";
-		ArrayList<String> list = new ArrayList<String>();
+		String inputData = "";
+		ArrayList<String> outputData = new ArrayList<String>();
 
 		try {
 			FileReader reader = new FileReader(filePath);
 			BufferedReader fReader = new BufferedReader(reader);
 
-			while((data = fReader.readLine()) != null) {
-				list.add(data);	
+			while((inputData = fReader.readLine()) != null) {
+				outputData.add(inputData);	
 			}	
 
 			fReader.close();
@@ -698,7 +653,7 @@ public class university {
 			System.out.println("ERROR CANNOT LOAD FILE");
 		}
 
-		return list;
+		return outputData;
 	}
 
 }
