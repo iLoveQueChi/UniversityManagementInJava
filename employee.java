@@ -7,6 +7,7 @@ public abstract class employee {
 	// allowance will be compute after load in employee's details. 
 	// So we dont put it the constructor and initialize it as a attributes
 
+	
 	// Contrustor
 	public employee(String employeeID, String fullName, double salaryCoefficient, int workingDay) {
 		this.employeeID = employeeID;
